@@ -1,0 +1,1 @@
+exports[`Logo should render properly 1`] = `"<div class=\"app__logo\"><span class=\"isvg failed\"><img src=\"\" alt=\"react-redux-observables-boilerplate\"></span></div>"`;

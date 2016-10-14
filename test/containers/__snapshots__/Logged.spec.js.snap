@@ -1,0 +1,1 @@
+exports[`Logged should render properly 1`] = `"<div class=\"app__logged app__route\"><a href=\"#load\" class=\"btn btn-primary\">Load</a><a href=\"#cancel\" class=\"btn btn-primary\">Cancel</a><div class=\"app__container\"></div></div>"`;
