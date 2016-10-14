@@ -15,11 +15,16 @@ describe('github', () => {
     epicMiddleware.replaceEpic(rootEpic);
   });
 
-  xit('fetchPopularRepos epic', done => {
+  xit('fetchPopularRepos epic', () => {
     const payload = { id: 123 };
 
     nock('https://api.github.com')
-      .get('/search/repositories?q=+language:javascript+created:%3E2016-10-01&sort=stars&order=desc')
+      .get('/search/repositories')
+      .query({
+        q: '+language:javascript+created:%3E2016-10-01',
+        sort: 'stars',
+        order: 'desc'
+      })
       .reply(200, payload);
 
     store.dispatch({ type: ActionTypes.FETCH_POPULAR_REPOS_REQUEST });
