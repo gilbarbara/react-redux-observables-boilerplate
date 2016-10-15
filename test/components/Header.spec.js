@@ -1,14 +1,19 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import Header from 'components/Header';
-
 const mockDispatch = jest.fn();
+
+jest.mock('store', () =>
+  ({
+    dispatch: mockDispatch
+  })
+);
+
+const Header = require('components/Header').default;
 
 function setup() {
   const props = {
     app: {},
-    dispatch: mockDispatch,
     location: {
       pathname: '/'
     }
@@ -28,8 +33,9 @@ describe('Header', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  xit('should handle clicks', () => {
+  it('should handle clicks', () => {
     wrapper.find('.app__header__logo').simulate('click');
+
     expect(mockDispatch.mock.calls[0][0]).toEqual({
       type: '@@router/CALL_HISTORY_METHOD',
       payload: { method: 'push', args: [{ pathname: '/', search: undefined, state: undefined }] }
