@@ -13,7 +13,7 @@ export function fetchPopularRepos(action$) {
       Observable.ajax.getJSON('https://api.github.com/search/repositories?q=+language:javascript+created:%3E2016-10-01&sort=stars&order=desc')
         .map(data => ({
           type: ActionTypes.FETCH_POPULAR_REPOS_SUCCESS,
-          payload: { data }
+          payload: { data: data.items }
         }))
         .takeUntil(action$.ofType(ActionTypes.CANCEL_FETCH))
         .catch(error => [
