@@ -1,6 +1,7 @@
 import { applyMiddleware, createStore, compose, combineReducers } from 'redux';
-import { browserHistory } from 'react-router';
+import browserHistory from 'react-router/lib/browserHistory';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
+import thunk from 'redux-thunk';
 import { createEpicMiddleware } from 'redux-observable';
 
 import createLogger from 'redux-logger';
@@ -24,7 +25,7 @@ const logger = createLogger({
 /* istanbul ignore next */
 const newStore = (initialState = {}) => {
   const createStoreWithMiddleware = compose(
-    applyMiddleware(epicMiddleware, routerMiddleware(browserHistory), logger),
+    applyMiddleware(thunk, epicMiddleware, routerMiddleware(browserHistory), logger),
     createReactotronTrackingEnhancer(Reactotron, {
       isActionImportant: action => action.type === ActionTypes.USER_LOGIN_SUCCESS
     })
