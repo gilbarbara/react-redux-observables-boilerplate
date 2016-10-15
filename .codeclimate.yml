@@ -6,11 +6,11 @@ engines:
     checks:
       import/no-duplicates:
         enabled: false
-      no-template-curly-in-string:
+      import/no-extraneous-dependencies:
+        enabled: false
+      import/no-named-as-default-member:
         enabled: false
       import/no-unresolved:
-        enabled: false
-      import/no-extraneous-dependencies:
         enabled: false
   scss-lint:
     enabled: true
