@@ -14,7 +14,7 @@ describe('user', () => {
     epicMiddleware.replaceEpic(rootEpic);
   });
 
-  it('userLogin epic', done => {
+  it('userLogin should return SUCCESS', done => {
     store.dispatch({ type: ActionTypes.USER_LOGIN_REQUEST });
 
     setTimeout(() => {

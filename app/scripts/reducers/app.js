@@ -1,3 +1,8 @@
+/**
+ * @module Reducers/App
+ * @desc App Reducer
+ */
+
 import { REHYDRATE } from 'redux-persist/constants';
 import { createReducer } from 'utils/helpers';
 

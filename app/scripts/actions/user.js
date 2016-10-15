@@ -1,6 +1,6 @@
 /**
  * @module Actions/User
- * @desc User Actions
+ * @desc Actions for User
  */
 
 import { ActionTypes } from 'constants/index';

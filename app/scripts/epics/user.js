@@ -15,7 +15,7 @@ export function userLogin(action$) {
       Observable.of({ type: ActionTypes.USER_LOGIN_SUCCESS }),
       Observable.of(goTo('/private'))
     ))
-    .catch(error => Observable.of({
+    .catch(/* istanbul ignore next  */ error => Observable.of({
       type: ActionTypes.USER_LOGIN_FAILURE,
       payload: { error },
       error: true
@@ -28,7 +28,7 @@ export function userLogout(action$) {
       Observable.of({ type: ActionTypes.USER_LOGOUT_SUCCESS }),
       Observable.of(goTo('/'))
     ))
-    .catch(error => Observable.of({
+    .catch(/* istanbul ignore next  */ error => Observable.of({
       type: ActionTypes.USER_LOGOUT_FAILURE,
       payload: { error },
       error: true

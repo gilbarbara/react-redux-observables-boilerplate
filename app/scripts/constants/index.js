@@ -1,9 +1,10 @@
-import keyMirror from 'fbjs/lib/keyMirror';
-
 /**
  * @namespace Constants
  * @desc App constants
  */
+
+
+import keyMirror from 'fbjs/lib/keyMirror';
 
 /**
  * @constant {Object} ActionTypes
