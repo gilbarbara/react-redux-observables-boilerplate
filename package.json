@@ -91,7 +91,6 @@
     "markdown-loader": "^0.1",
     "modernizr-loader": "0.0.5",
     "nightwatch": "^0.9",
-    "nock": "^8.1.0",
     "node-sass": "^3.10",
     "null-loader": "^0.1",
     "offline-plugin": "^3.4",
@@ -118,7 +117,8 @@
     "url-loader": "^0.5",
     "webpack": "^2.1.0-beta",
     "webpack-dev-server": "^2.1.0-beta",
-    "webpack-merge": "^0.14"
+    "webpack-merge": "^0.14",
+    "xhr-mock": "^1.6"
   },
   "scripts": {
     "start": "node config/webpack.server.js",

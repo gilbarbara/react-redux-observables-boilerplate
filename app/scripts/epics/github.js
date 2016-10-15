@@ -16,10 +16,12 @@ export function fetchPopularRepos(action$) {
           payload: { data }
         }))
         .takeUntil(action$.ofType(ActionTypes.CANCEL_FETCH))
-        .catch(error => [{
-          type: ActionTypes.FETCH_POPULAR_REPOS_FAILURE,
-          payload: { error },
-          error: true
-        }])
+        .catch(error => [
+          {
+            type: ActionTypes.FETCH_POPULAR_REPOS_FAILURE,
+            payload: { message: error.message, status: error.status },
+            error: true
+          }
+        ])
     );
 }
