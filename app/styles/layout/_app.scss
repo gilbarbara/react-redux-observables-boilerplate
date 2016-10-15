@@ -3,22 +3,24 @@
 
   &__main {
     min-height: 100vh;
-    padding: ($header-height + $grid-gutter-width) 0 ($footer-height + $grid-gutter-width);
+    padding: (nth($header-height, 1) + $grid-gutter-width) 0 ($footer-height + $grid-gutter-width);
+
+    @include md {
+      padding-top: nth($header-height, 2);
+    }
 
     @at-root .app--public & {
       padding: 0;
     }
   }
 
+  &__route {
+    padding-top: $grid-gutter-width;
+  }
+
   &__container {
     @include app-container();
 
     margin: 0 auto;
-  }
-
-  &__logout {
-    span {
-      margin-right: $grid-gutter-width / 6;
-    }
   }
 }

@@ -41,7 +41,7 @@ describe('Header', () => {
       payload: { method: 'push', args: [{ pathname: '/', search: undefined, state: undefined }] }
     });
 
-    wrapper.find('.app__logout').simulate('click');
+    wrapper.find('.app__header__logout').simulate('click');
     expect(mockDispatch.mock.calls[1][0]).toEqual({ type: 'USER_LOGOUT_REQUEST' });
   });
 });
