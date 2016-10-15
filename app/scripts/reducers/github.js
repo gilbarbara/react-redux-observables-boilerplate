@@ -43,7 +43,7 @@ export default {
     [ActionTypes.FETCH_POPULAR_REPOS_FAILURE](state, action) {
       const popularRepos = {
         ...state.popularRepos,
-        data: action.payload.data,
+        ...action.payload,
         isLoading: false,
         isReady: false,
         error: true
