@@ -3,10 +3,11 @@ import { mount } from 'enzyme';
 
 import { Logged } from 'containers/Logged';
 
+const mockDispatch = jest.fn();
+
 function setup() {
   const props = {
-    dispatch: () => {
-    },
+    dispatch: mockDispatch,
     location: {},
     github: {
       popularRepos: {
@@ -36,5 +37,19 @@ describe('Logged', () => {
 
   it('should render properly', () => {
     expect(wrapper.html()).toMatchSnapshot();
+  });
+
+  it('should handle clicks', () => {
+    wrapper.setProps({
+      github: {
+        popularRepos: {
+          isReady: false,
+          data: []
+        }
+      }
+    });
+
+    wrapper.find('.btn').simulate('click');
+    expect(mockDispatch.mock.calls[0][0]).toEqual({ type: 'FETCH_POPULAR_REPOS_REQUEST' });
   });
 });
