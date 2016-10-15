@@ -42,8 +42,14 @@
 
   h1 {
     color: #fff;
+    font-size: $font-size-h3;
     line-height: 1.4;
-    margin-bottom: $grid-gutter-width;
+    margin: 0 auto $grid-gutter-width;
+    max-width: 46rem;
     text-align: center;
+
+    @include sm {
+      font-size: $font-size-h2;
+    }
   }
 }

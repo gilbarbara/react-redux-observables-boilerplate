@@ -1,1 +1,1 @@
-exports[`Logged should render properly 1`] = `"<div class=\"app__logged app__route\"><a href=\"#load\" class=\"btn btn-primary\">Load</a><a href=\"#cancel\" class=\"btn btn-primary\">Cancel</a><div class=\"app__container\"></div></div>"`;
+exports[`Logged should render properly 1`] = `"<div class=\"app__logged app__route\"><div class=\"app__container\"><h2>Popular Repos</h2><div class=\"app__logged__repos\"><div><a href=\"http://...\" target=\"_blank\">github/Repo</a><div>Oh Hai</div></div></div></div></div>"`;

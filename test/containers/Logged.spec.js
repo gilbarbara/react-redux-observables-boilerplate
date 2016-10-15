@@ -1,12 +1,27 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import Logged from 'containers/Logged';
+import { Logged } from 'containers/Logged';
 
 function setup() {
   const props = {
-    dispatch: () => {},
-    location: {}
+    dispatch: () => {
+    },
+    location: {},
+    github: {
+      popularRepos: {
+        isReady: true,
+        isLoading: false,
+        data: [
+          {
+            name: 'Repo',
+            html_url: 'http://...',
+            owner: { login: 'github' },
+            description: 'Oh Hai'
+          }
+        ]
+      }
+    }
   };
 
   return mount(<Logged {...props} />);
@@ -15,8 +30,8 @@ function setup() {
 describe('Logged', () => {
   const wrapper = setup(true);
 
-  it('should be a StatelessComponent', () => {
-    expect(wrapper.instance().constructor.name).toBe('StatelessComponent');
+  it('should be a Component', () => {
+    expect(wrapper.instance() instanceof React.Component).toBe(true);
   });
 
   it('should render properly', () => {

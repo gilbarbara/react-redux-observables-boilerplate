@@ -1,28 +1,72 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { autobind } from 'core-decorators';
+import { shouldComponentUpdate } from 'utils/helpers';
 
-import store from 'store';
-import readme from '../../../README.md';
+import { ActionTypes } from 'constants/index';
+import { fetchPopularRepos } from 'actions';
 
-const { dispatch } = store;
+import Loader from 'components/Loader';
 
-const handleClickFetch = e => {
-  e.preventDefault();
+export class Logged extends React.Component {
+  static propTypes = {
+    dispatch: React.PropTypes.func.isRequired,
+    github: React.PropTypes.object.isRequired
+  };
 
-  dispatch({ type: 'FETCH' });
-};
+  shouldComponentUpdate = shouldComponentUpdate;
 
-const handleClickCancel = e => {
-  e.preventDefault();
+  componentWillMount() {
+    const { dispatch } = this.props;
 
-  dispatch({ type: 'CANCEL' });
-};
+    dispatch(fetchPopularRepos());
+  }
 
-const Logged = () => (
-  <div key="Logged" className="app__logged app__route">
-    <a href="#load" className="btn btn-primary" onClick={handleClickFetch}>Load</a>
-    <a href="#cancel" className="btn btn-primary" onClick={handleClickCancel}>Cancel</a>
-    <div className="app__container" dangerouslySetInnerHTML={{ __html: readme }} />
-  </div>
-);
+  @autobind
+  handleClickCancel(e) {
+    e.preventDefault();
+    const { dispatch } = this.props;
 
-export default Logged;
+    dispatch({ type: ActionTypes.CANCEL_FETCH });
+  }
+
+  render() {
+    const { github: { popularRepos } } = this.props;
+    const output = {
+      html: (<a href="#cancel" className="btn btn-primary" onClick={this.handleClickCancel}>Cancel</a>),
+      loader: (<Loader />)
+    };
+
+    if (popularRepos.isReady && !popularRepos.isLoading) {
+      output.loader = undefined;
+
+      output.html = (
+        <div className="app__logged__repos">
+          {popularRepos.data.map(d =>
+            (<div key={d.name}>
+              <a href={d.html_url} target="_blank">{`${d.owner.login}/${d.name}`}</a>
+              <div>{d.description}</div>
+            </div>)
+          )}
+        </div>
+      );
+    }
+
+    return (
+      <div key="Logged" className="app__logged app__route">
+        <div className="app__container">
+          <h2>Popular Repos</h2>
+          {output.loader}
+          {output.html}
+        </div>
+      </div>
+    );
+  }
+}
+
+/* istanbul ignore next */
+function mapStateToProps(state) {
+  return { github: state.github };
+}
+
+export default connect(mapStateToProps)(Logged);
