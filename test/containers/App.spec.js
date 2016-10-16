@@ -1,12 +1,23 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import App from 'containers/App';
+import { App } from 'containers/App';
 
 function setup() {
   const props = {
-    children: <div key="1" className="child">Hello</div>,
-    location: {}
+    dispatch: () => {
+    },
+    app: {
+      notifications: {
+        visible: false,
+        message: '',
+        status: '',
+        withTimeout: true
+      }
+    },
+    user: {
+      isAuthenticated: false
+    }
   };
 
   return shallow(<App {...props} />);

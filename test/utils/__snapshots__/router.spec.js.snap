@@ -1,0 +1,7 @@
+exports[`utils/MatchWhenAuthorized should allow navigation for authenticated access 1`] = `"<div class=\"private\" data-reactroot=\"\" data-reactid=\"1\" data-react-checksum=\"-1373629172\"></div>"`;
+
+exports[`utils/MatchWhenAuthorized should prevent navigation for unauthenticated access 1`] = `"<!-- react-empty: 1 -->"`;
+
+exports[`utils/RedirectWhenAuthorized should redirect to /private for authenticated access 1`] = `"<!-- react-empty: 1 -->"`;
+
+exports[`utils/RedirectWhenAuthorized should render the Login component for unauthenticated access 1`] = `"<div class=\"login\" data-reactroot=\"\" data-reactid=\"1\" data-react-checksum=\"2050757674\"></div>"`;

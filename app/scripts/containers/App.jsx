@@ -1,13 +1,62 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import Router from 'react-router/BrowserRouter';
+import Match from 'react-router/Match';
+import Miss from 'react-router/Miss';
 
-class App extends React.Component {
+import { MatchWhenAuthorized, RedirectWhenAuthorized } from 'utils/router';
+
+import Home from 'containers/Home';
+import Private from 'containers/Private';
+import Login from 'containers/Login';
+import NotFound from 'containers/NotFound';
+
+import Header from 'components/Header';
+import Footer from 'components/Footer';
+import SystemNotifications from 'components/SystemNotifications';
+
+export class App extends React.Component {
   static propTypes = {
-    children: React.PropTypes.object.isRequired
+    app: React.PropTypes.object.isRequired,
+    dispatch: React.PropTypes.func.isRequired,
+    user: React.PropTypes.object.isRequired
   };
 
   render() {
-    return this.props.children;
+    const { app, dispatch, user } = this.props;
+
+    return (
+      <Router>
+        <div key="app" className="app">
+          <Header dispatch={dispatch} user={user} />
+          <main className="app__main">
+            <Match exactly={true} pattern="/" component={Home} />
+            <RedirectWhenAuthorized
+              exactly={true}
+              pattern="/login"
+              component={Login}
+              isAuthenticated={user.isAuthenticated} />
+            <MatchWhenAuthorized
+              exactly={true}
+              pattern="/private"
+              component={Private}
+              isAuthenticated={user.isAuthenticated} />
+            <Miss component={NotFound} />
+          </main>
+          <Footer />
+          <SystemNotifications dispatch={dispatch} app={app} />
+        </div>
+      </Router>
+    );
   }
 }
 
-export default App;
+/* istanbul ignore next */
+function mapStateToProps(state) {
+  return {
+    app: state.app,
+    user: state.user
+  };
+}
+
+export default connect(mapStateToProps)(App);

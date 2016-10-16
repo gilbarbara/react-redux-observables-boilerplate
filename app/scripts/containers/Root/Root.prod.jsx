@@ -1,17 +1,15 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Router } from 'react-router';
-import createRoutes from 'routes';
+import App from 'containers/App';
 
 /* istanbul ignore next */
-const Root = ({ store, history }) => (
+const Root = ({ store }) => (
   <Provider store={store}>
-    <Router history={history} routes={createRoutes()} />
+    <App />
   </Provider>
 );
 
 Root.propTypes = {
-  history: React.PropTypes.object.isRequired,
   store: React.PropTypes.object.isRequired
 };
 
