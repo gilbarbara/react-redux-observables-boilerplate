@@ -1,25 +1,11 @@
 .app__header {
-  background-color: #fff;
-  height: nth($header-height, 1);
+  background-color: lighten($brand-secondary, 30);
+  height: $header-height;
   left: 0;
   position: fixed;
   right: 0;
   top: 0;
   z-index: 200;
-
-  @include md {
-    height: nth($header-height, 2);
-  }
-
-  &:before {
-    background-color: $brand-primary;
-    bottom: 0;
-    content: '';
-    height: 0.2rem;
-    left: 0;
-    position: absolute;
-    right: 0;
-  }
 
   > .app__container {
     align-items: center;
@@ -33,7 +19,6 @@
   h1 {
     color: #000;
     flex-basis: 76%;
-    font-family: Bungee, sans-serif;
     font-size: 1.9rem;
     margin: 0;
     margin-left: $grid-gutter-width / 2;
@@ -52,46 +37,48 @@
   }
 
   &__menu {
+    display: flex;
+    justify-content: flex-start;
+    line-height: 1;
+    margin-bottom: 0;
+    padding: 0;
+    width: 100%;
+
     @include is-only {
       margin-top: $grid-gutter-width / 6;
       width: 100%;
     }
 
-    @include md {
-      align-self: center;
-      flex: 2 1 auto;
-      padding-left: $grid-gutter-width / 2;
-    }
+    li {
+      &:not(:last-child) {
+        align-items: center;
+        display: flex;
+        margin-right: $grid-gutter-width / 2;
+      }
 
-    ul {
-      display: flex;
-      justify-content: flex-end;
-      line-height: 1;
-      margin-bottom: 0;
-
-      li {
-        &:not(:last-child) {
-          margin-right: $grid-gutter-width / 3;
-        }
+      &:last-child {
+        display: flex;
+        flex-grow: 2;
+        justify-content: flex-end;
       }
     }
 
     a {
-      display: flex;
       font-size: 1.3rem;
 
       @include lg {
         font-size: 1.6rem;
       }
+    }
+  }
 
-      &.active {
-        color: #000;
-      }
+  &__link {
+    color: #fff;
 
-      span {
-        margin-left: $grid-gutter-width / 12;
-        text-transform: uppercase;
-      }
+    &.active {
+      color: $brand-primary;
+      font-weight: 700;
+      pointer-events: none;
     }
   }
 

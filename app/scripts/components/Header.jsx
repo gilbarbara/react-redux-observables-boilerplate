@@ -1,37 +1,71 @@
 import React from 'react';
+import cx from 'classnames';
 
-import { goTo, logOut } from 'actions';
-import config from 'config';
-import Logo from 'components/Logo';
-import store from 'store';
+import { login, logOut } from 'actions';
+import Link from 'react-router/Link';
 
-const { dispatch } = store;
+const onClickLogin = dispatch =>
+  e => {
+    e.preventDefault();
 
-const onClickLogo = e => {
-  e.preventDefault();
-  dispatch(goTo(e.currentTarget.getAttribute('href')));
-};
+    dispatch(login());
+  };
 
-const onClickLogout = e => {
-  e.preventDefault();
-  dispatch(logOut());
-};
+const onClickLogout = dispatch =>
+  e => {
+    e.preventDefault();
 
-const Header = () =>
+    dispatch(logOut());
+  };
+
+const Header = ({ dispatch, user }) =>
   (<header className="app__header">
     <div className="app__container">
-      <a href="/" className="app__header__logo" onClick={onClickLogo}><Logo /></a>
-      <h1>{config.title}</h1>
-      <div className="app__header__menu">
-        <ul className="list-unstyled">
-          <li>
-            <a href="#logout" className="app__header__logout" onClick={onClickLogout}>
-              <i className="i-sign-out" /><span>logout</span>
-            </a>
-          </li>
-        </ul>
-      </div>
+      <ul className="app__header__menu">
+        <li>
+          <Link
+            to="/"
+            className="app__header__link"
+            activeOnlyWhenExact={true}
+            activeClassName="active">
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/private"
+            className="app__header__link"
+            activeClassName="active">
+            Private
+          </Link>
+        </li>
+        <li>
+          {user.isAuthenticated ?
+           (<a
+             href="#logout"
+             className="app__header__logout btn btn-sm btn-secondary btn-icon"
+             onClick={onClickLogout(dispatch)}>
+             <i className="i-sign-out" />
+             <span>logout</span>
+           </a>) :
+           (<a
+             href="#login"
+             className="app__header__login btn btn-sm btn-primary btn-icon"
+             onClick={onClickLogin(dispatch)}>
+             <i
+               className={cx({
+                 'i-circle-o-notch i-spin': user.isRunning,
+                 'i-sign-in': !user.isRunning })} />
+             <span>Login</span>
+           </a>)}
+        </li>
+      </ul>
     </div>
   </header>);
+
+Header.propTypes = {
+  dispatch: React.PropTypes.func.isRequired,
+  user: React.PropTypes.object.isRequired
+};
 
 export default Header;

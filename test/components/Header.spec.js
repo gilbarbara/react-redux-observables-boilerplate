@@ -2,20 +2,17 @@ import React from 'react';
 import { mount } from 'enzyme';
 
 const mockDispatch = jest.fn();
-
-jest.mock('store', () =>
-  ({
-    dispatch: mockDispatch
-  })
+jest.mock('react-router/Link', () =>
+  (({ to, children }) => (<a href={to}>{children}</a>))
 );
 
 const Header = require('components/Header').default;
 
 function setup() {
   const props = {
-    app: {},
-    location: {
-      pathname: '/'
+    dispatch: mockDispatch,
+    user: {
+      isAuthenticated: false
     }
   };
 
@@ -33,12 +30,16 @@ describe('Header', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
 
-  it('should handle clicks', () => {
-    wrapper.find('.app__header__logo').simulate('click');
+  it('should handle login click', () => {
+    wrapper.find('.app__header__login').simulate('click');
+    expect(mockDispatch.mock.calls[0][0]).toEqual({ type: 'USER_LOGIN_REQUEST' });
+  });
 
-    expect(mockDispatch.mock.calls[0][0]).toEqual({
-      type: '@@router/CALL_HISTORY_METHOD',
-      payload: { method: 'push', args: [{ pathname: '/', search: undefined, state: undefined }] }
+  it('should handle logout click', () => {
+    wrapper.setProps({
+      user: {
+        isAuthenticated: true
+      }
     });
 
     wrapper.find('.app__header__logout').simulate('click');
