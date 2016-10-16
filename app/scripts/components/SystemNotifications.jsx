@@ -1,6 +1,5 @@
 import React from 'react';
 import cx from 'classnames';
-import { connect } from 'react-redux';
 
 import { hideAlert } from 'actions';
 
@@ -54,10 +53,4 @@ SystemNotifications.propTypes = {
   dispatch: React.PropTypes.func.isRequired
 };
 
-
-/* istanbul ignore next */
-function mapStateToProps(state) {
-  return { app: state.app };
-}
-
-export default connect(mapStateToProps)(SystemNotifications);
+export default SystemNotifications;

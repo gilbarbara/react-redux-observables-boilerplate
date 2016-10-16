@@ -16,6 +16,10 @@ describe('User', () => {
     expect(reducers.user(undefined, { type: REHYDRATE, payload: { } })).toMatchSnapshot();
   });
 
+  it(`should handle ${ActionTypes.USER_LOGIN_REQUEST}`, () => {
+    expect(reducers.user(undefined, { type: ActionTypes.USER_LOGIN_REQUEST })).toMatchSnapshot();
+  });
+
   it(`should handle ${ActionTypes.USER_LOGIN_SUCCESS}`, () => {
     expect(reducers.user(undefined, { type: ActionTypes.USER_LOGIN_SUCCESS })).toMatchSnapshot();
   });

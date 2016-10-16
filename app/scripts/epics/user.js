@@ -12,8 +12,7 @@ export function userLogin(action$) {
   return action$.ofType(ActionTypes.USER_LOGIN_REQUEST)
     .delay(1000)
     .mergeMap(() => Observable.merge(
-      Observable.of({ type: ActionTypes.USER_LOGIN_SUCCESS }),
-      Observable.of(goTo('/private'))
+      Observable.of({ type: ActionTypes.USER_LOGIN_SUCCESS })
     ))
     .catch(/* istanbul ignore next  */ error => Observable.of({
       type: ActionTypes.USER_LOGIN_FAILURE,
@@ -25,8 +24,7 @@ export function userLogin(action$) {
 export function userLogout(action$) {
   return action$.ofType(ActionTypes.USER_LOGOUT_REQUEST)
     .mergeMap(() => Observable.merge(
-      Observable.of({ type: ActionTypes.USER_LOGOUT_SUCCESS }),
-      Observable.of(goTo('/'))
+      Observable.of({ type: ActionTypes.USER_LOGOUT_SUCCESS })
     ))
     .catch(/* istanbul ignore next  */ error => Observable.of({
       type: ActionTypes.USER_LOGOUT_FAILURE,

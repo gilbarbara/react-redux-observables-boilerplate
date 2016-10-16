@@ -20,8 +20,7 @@ describe('user', () => {
     setTimeout(() => {
       expect(store.getActions()).toEqual([
         { type: ActionTypes.USER_LOGIN_REQUEST },
-        { type: ActionTypes.USER_LOGIN_SUCCESS },
-        goTo('/private')
+        { type: ActionTypes.USER_LOGIN_SUCCESS }
       ]);
 
       done();
@@ -34,8 +33,7 @@ describe('user', () => {
     setTimeout(() => {
       expect(store.getActions()).toEqual([
         { type: ActionTypes.USER_LOGOUT_REQUEST },
-        { type: ActionTypes.USER_LOGOUT_SUCCESS },
-        goTo('/')
+        { type: ActionTypes.USER_LOGOUT_SUCCESS }
       ]);
 
       done();

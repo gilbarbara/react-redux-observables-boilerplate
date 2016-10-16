@@ -24,9 +24,4 @@ describe('Home', () => {
   it('should render properly', () => {
     expect(wrapper.html()).toMatchSnapshot();
   });
-
-  it('should handle clicks', () => {
-    wrapper.find('.btn').simulate('click');
-    expect(mockDispatch.mock.calls[0][0]).toEqual({ type: 'USER_LOGIN_REQUEST' });
-  });
 });

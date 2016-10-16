@@ -12,4 +12,13 @@
     margin-left: $grid-gutter-width / 6;
     text-transform: uppercase;
   }
+
+  &--lg {
+    padding-bottom: 0.4rem;
+    padding-top: 0.4rem;
+
+    [class^=i-] {
+      font-size: 2.4rem;
+    }
+  }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import { Logged } from 'containers/Logged';
+import { Private } from 'containers/Private';
 
 const mockDispatch = jest.fn();
 
@@ -25,10 +25,10 @@ function setup() {
     }
   };
 
-  return mount(<Logged {...props} />);
+  return mount(<Private {...props} />);
 }
 
-describe('Logged', () => {
+describe('Private', () => {
   const wrapper = setup(true);
 
   it('should be a Component', () => {

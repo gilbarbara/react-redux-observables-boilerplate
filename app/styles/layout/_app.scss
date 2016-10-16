@@ -1,17 +1,11 @@
 .app {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 
   &__main {
-    min-height: 100vh;
-    padding: (nth($header-height, 1) + $grid-gutter-width) 0 ($footer-height + $grid-gutter-width);
-
-    @include md {
-      padding-top: nth($header-height, 2);
-    }
-
-    @at-root .app--public & {
-      padding: 0;
-    }
+    min-height: calc(100vh - #{$footer-height});
+    padding-top: $header-height;
   }
 
   &__route {
@@ -22,5 +16,10 @@
     @include app-container();
 
     margin: 0 auto;
+  }
+
+  &__cancel {
+    margin-top: $grid-gutter-width;
+    text-align: center;
   }
 }

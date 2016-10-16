@@ -9,7 +9,8 @@ import { createReducer } from 'utils/helpers';
 import { ActionTypes } from 'constants/index';
 
 export const userState = {
-  logged: false,
+  isAuthenticated: false,
+  isRunning: false,
   rehydrated: false
 };
 
@@ -20,11 +21,25 @@ export default {
         rehydrated: true
       });
     },
+    [ActionTypes.USER_LOGIN_REQUEST](state) {
+      return {
+        ...state,
+        isRunning: true
+      };
+    },
     [ActionTypes.USER_LOGIN_SUCCESS](state) {
-      return { ...state, logged: true };
+      return {
+        ...state,
+        isAuthenticated: true,
+        isRunning: false
+      };
     },
     [ActionTypes.USER_LOGOUT_SUCCESS](state) {
-      return { ...state, logged: false };
+      return {
+        ...state,
+        isAuthenticated: false,
+        isRunning: false
+      };
     }
   })
 };

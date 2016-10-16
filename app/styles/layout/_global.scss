@@ -44,3 +44,12 @@ a {
     }
   }
 }
+
+.isvg {
+  display: inline-block;
+
+  svg {
+    height: auto;
+    max-height: 100%;
+  }
+}

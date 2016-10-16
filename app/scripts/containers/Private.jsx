@@ -8,7 +8,7 @@ import { fetchPopularRepos } from 'actions';
 
 import Loader from 'components/Loader';
 
-export class Logged extends React.Component {
+export class Private extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
     github: React.PropTypes.object.isRequired
@@ -33,7 +33,15 @@ export class Logged extends React.Component {
   render() {
     const { github: { popularRepos } } = this.props;
     const output = {
-      html: (<a href="#cancel" className="btn btn-primary" onClick={this.handleClickCancel}>Cancel</a>),
+      html: (<div className="app__cancel">
+        <a
+          href="#cancel"
+          className="btn btn-primary btn-sm btn-icon btn-icon--lg"
+          onClick={this.handleClickCancel}>
+          <i className="i-times-circle" />
+          <span>Cancel</span>
+        </a>
+      </div>),
       loader: (<Loader />)
     };
 
@@ -41,7 +49,7 @@ export class Logged extends React.Component {
       output.loader = undefined;
 
       output.html = (
-        <div className="app__logged__repos">
+        <div className="app__private__repos">
           {popularRepos.data.map(d =>
             (<div key={d.name}>
               <a href={d.html_url} target="_blank">{`${d.owner.login}/${d.name}`}</a>
@@ -53,7 +61,7 @@ export class Logged extends React.Component {
     }
 
     return (
-      <div key="Logged" className="app__logged app__route">
+      <div key="Private" className="app__private app__route">
         <div className="app__container">
           <h2>Popular Repos</h2>
           {output.loader}
@@ -69,4 +77,4 @@ function mapStateToProps(state) {
   return { github: state.github };
 }
 
-export default connect(mapStateToProps)(Logged);
+export default connect(mapStateToProps)(Private);
