@@ -7,6 +7,21 @@ Object {
 }
 `;
 
+exports[`App should handle LOCATION_CHANGE 1`] = `
+Object {
+  "location": Object {
+    "pathname": "/",
+  },
+  "notifications": Object {
+    "message": "",
+    "status": "",
+    "visible": false,
+    "withTimeout": true,
+  },
+  "rehydrated": false,
+}
+`;
+
 exports[`App should handle SHOW_ALERT 1`] = `
 Object {
   "message": "hello",
