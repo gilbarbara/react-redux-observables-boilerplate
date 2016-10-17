@@ -14,12 +14,12 @@ var NPMPackage = require('./../package');
 
 var config = merge.smart(webpackConfig, {
   entry: {
-    '/scripts/app': './scripts/index.jsx',
-    '/scripts/modernizr': './scripts/vendor/modernizr-custom.js'
+    'scripts/app': './scripts/index.jsx',
+    'scripts/modernizr': './scripts/vendor/modernizr-custom.js'
   },
   output: {
     filename: '[name].[hash].js',
-    path: path.join(__dirname, '../dist'),
+    path: path.join(__dirname, '../dist')
   },
   devtool: 'source-map',
   plugins: [
@@ -28,7 +28,7 @@ var config = merge.smart(webpackConfig, {
       { from: '.htaccess' },
       { from: 'robots.txt' }
     ]),
-    new ExtractText('/styles/app.[hash].css'),
+    new ExtractText('styles/app.[hash].css'),
     new HtmlPlugin({
       appMountId: 'react',
       inject: false,
@@ -43,10 +43,6 @@ var config = merge.smart(webpackConfig, {
     new webpack.optimize.DedupePlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
-    }),
-    new OfflinePlugin({
-      relativePaths: false,
-      publicPath: '/'
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
@@ -77,6 +73,10 @@ var config = merge.smart(webpackConfig, {
     }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true
+    }),
+    new OfflinePlugin({
+      relativePaths: false,
+      publicPath: '/'
     })
   ]
 });
