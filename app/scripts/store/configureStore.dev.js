@@ -21,7 +21,7 @@ const logger = createLogger({
 });
 
 /* istanbul ignore next */
-const newStore = (initialState = {}) => {
+const configStore = (initialState = {}) => {
   const createStoreWithMiddleware = compose(
     applyMiddleware(thunk, epicMiddleware, logger),
     createReactotronTrackingEnhancer(Reactotron, {
@@ -44,4 +44,4 @@ const newStore = (initialState = {}) => {
   return store;
 };
 
-export default newStore;
+export default configStore;

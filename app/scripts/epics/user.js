@@ -6,7 +6,6 @@
 import { Observable } from 'rxjs/Observable';
 
 import { ActionTypes } from 'constants/index';
-import { goTo } from 'actions';
 
 export function userLogin(action$) {
   return action$.ofType(ActionTypes.USER_LOGIN_REQUEST)

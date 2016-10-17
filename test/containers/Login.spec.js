@@ -27,7 +27,8 @@ describe('Login', () => {
       location: {
         state: { from: '/private' }
       }
-    })
+    });
+
     expect(wrapper.html()).toMatchSnapshot();
   });
 });

@@ -1,5 +1,4 @@
 import rootEpic from 'epics';
-import { goTo } from 'actions';
 import { ActionTypes } from 'constants/index';
 import mockStore, { epicMiddleware } from '../lib/mockedStore';
 
