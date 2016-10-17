@@ -9,9 +9,6 @@
 ./app/store
 
 [options]
-esproposal.class_static_field=ignore
-esproposal.class_instance_field=ignore
-
 module.name_mapper='^actions\/(.*)$' -> '<PROJECT_ROOT>/app/scripts/actions/\1'
 module.name_mapper='^components\/(.*)$' -> '<PROJECT_ROOT>/app/scripts/components/\1'
 module.name_mapper='^constants\/index$' -> '<PROJECT_ROOT>/app/scripts/constants/'
