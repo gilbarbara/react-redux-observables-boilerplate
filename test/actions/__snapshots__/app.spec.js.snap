@@ -1,17 +1,12 @@
 exports[`App goTo should create an action to navigate with react-router 1`] = `
 Array [
   Object {
-    "payload": Object {
-      "args": Array [
-        Object {
-          "pathname": "/destination",
-          "search": undefined,
-          "state": undefined,
-        },
-      ],
-      "method": "push",
+    "location": Object {
+      "pathname": "/destination",
+      "search": undefined,
+      "state": undefined,
     },
-    "type": "@@router/CALL_HISTORY_METHOD",
+    "type": "LOCATION_CHANGE",
   },
 ]
 `;

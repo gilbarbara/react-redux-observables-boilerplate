@@ -8,6 +8,7 @@ function setup() {
     dispatch: () => {
     },
     app: {
+      location: { pathname: '/' },
       notifications: {
         visible: false,
         message: '',

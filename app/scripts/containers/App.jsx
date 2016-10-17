@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Router from 'react-router/BrowserRouter';
+import BrowserHistory from 'react-history/BrowserHistory';
+import StaticRouter from 'react-router/StaticRouter';
 import Match from 'react-router/Match';
 import Miss from 'react-router/Miss';
 
 import { MatchWhenAuthorized, RedirectWhenAuthorized } from 'utils/router';
+import { setLocation } from 'actions';
 
 import Home from 'containers/Home';
 import Private from 'containers/Private';
@@ -26,27 +28,45 @@ export class App extends React.Component {
     const { app, dispatch, user } = this.props;
 
     return (
-      <Router>
-        <div key="app" className="app">
-          <Header dispatch={dispatch} user={user} />
-          <main className="app__main">
-            <Match exactly={true} pattern="/" component={Home} />
-            <RedirectWhenAuthorized
-              exactly={true}
-              pattern="/login"
-              component={Login}
-              isAuthenticated={user.isAuthenticated} />
-            <MatchWhenAuthorized
-              exactly={true}
-              pattern="/private"
-              component={Private}
-              isAuthenticated={user.isAuthenticated} />
-            <Miss component={NotFound} />
-          </main>
-          <Footer />
-          <SystemNotifications dispatch={dispatch} app={app} />
-        </div>
-      </Router>
+      <BrowserHistory>
+        {({ history, action, location }) => {
+          if (location.pathname !== app.location.pathname) {
+            setImmediate(() => {
+              dispatch(setLocation(location));
+            });
+          }
+
+          return (
+            <StaticRouter
+              action={action}
+              blockTransitions={history.block}
+              key={app.pathname} // github.com/yahoo/react-intl/issues/234#issuecomment-163366518
+              location={location}
+              onPush={history.push}
+              onReplace={history.replace}>
+              <div key="app" className="app">
+                <Header dispatch={dispatch} user={user} />
+                <main className="app__main">
+                  <Match exactly={true} pattern="/" component={Home} />
+                  <RedirectWhenAuthorized
+                    exactly={true}
+                    pattern="/login"
+                    component={Login}
+                    isAuthenticated={user.isAuthenticated} />
+                  <MatchWhenAuthorized
+                    exactly={true}
+                    pattern="/private"
+                    component={Private}
+                    isAuthenticated={user.isAuthenticated} />
+                  <Miss component={NotFound} />
+                </main>
+                <Footer />
+                <SystemNotifications dispatch={dispatch} app={app} />
+              </div>
+            </StaticRouter>
+          );
+        }}
+      </BrowserHistory>
     );
   }
 }

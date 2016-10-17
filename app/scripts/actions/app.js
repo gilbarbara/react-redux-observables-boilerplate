@@ -2,9 +2,6 @@
  * @module Actions/App
  * @desc App Actions
  */
-
-import { push } from 'react-router-redux';
-
 import { ActionTypes } from 'constants/index';
 
 /**
@@ -19,10 +16,20 @@ import { ActionTypes } from 'constants/index';
  * @returns {function}
  */
 export function goTo(pathname, options = {}) {
-  return push({
-    pathname,
-    search: options.search,
-    state: options.state
+  return {
+    type: ActionTypes.LOCATION_CHANGE,
+    location: {
+      pathname,
+      search: options.search,
+      state: options.state
+    }
+  };
+}
+
+export function setLocation(location) {
+  return ({
+    type: ActionTypes.LOCATION_CHANGE,
+    payload: { location },
   });
 }
 

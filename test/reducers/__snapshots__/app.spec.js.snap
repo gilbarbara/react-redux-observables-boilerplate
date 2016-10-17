@@ -18,6 +18,7 @@ Object {
 
 exports[`App should handle persist/REHYDRATE with payload 1`] = `
 Object {
+  "location": Object {},
   "notifications": Object {
     "message": "",
     "status": "",
@@ -30,6 +31,7 @@ Object {
 
 exports[`App should handle persist/REHYDRATE without payload 1`] = `
 Object {
+  "location": Object {},
   "notifications": Object {
     "message": "",
     "status": "",
@@ -42,6 +44,7 @@ Object {
 
 exports[`App should return the initial state 1`] = `
 Object {
+  "location": Object {},
   "notifications": Object {
     "message": "",
     "status": "",

@@ -22,6 +22,7 @@ export const ActionTypes = keyMirror({
   FETCH_POPULAR_REPOS_FAILURE: undefined,
   FETCH_POPULAR_REPOS_CANCEL: undefined,
   CANCEL_FETCH: undefined,
+  LOCATION_CHANGE: undefined,
   SHOW_ALERT: undefined,
   HIDE_ALERT: undefined
 });
