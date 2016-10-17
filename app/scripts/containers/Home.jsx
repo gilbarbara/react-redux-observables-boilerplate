@@ -1,11 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { autobind } from 'core-decorators';
 import SVG from 'react-inlinesvg';
 import { shouldComponentUpdate } from 'utils/helpers';
 import config from 'config';
 
-import { login } from 'actions';
 import Logo from 'components/Logo';
 
 export class Home extends React.Component {
@@ -27,7 +25,7 @@ export class Home extends React.Component {
             <p>{config.description}</p>
             <a
               href="https://github.com/gilbarbara/react-redux-observables-boilerplate"
-              className="btn btn-lg btn-primary btn-icon"
+              className="app__home__download btn btn-lg btn-primary btn-icon"
               target="_blank">
               <i className="i-github" />
               <span>Download</span>
