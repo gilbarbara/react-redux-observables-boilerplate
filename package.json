@@ -89,7 +89,6 @@
     "extract-text-webpack-plugin": "^2.0.0-beta",
     "fetch-mock": "^5.5",
     "file-loader": "^0.9",
-    "gh-pages": "^0.11",
     "html-loader": "^0.4",
     "html-webpack-plugin": "^2.22",
     "husky": "^0.11",
@@ -116,6 +115,7 @@
     "redux-diff-logger": "0.0.9",
     "redux-logger": "^2.7",
     "redux-mock-store": "1.2",
+    "rsync": "^0.5",
     "sass-loader": "^4.0",
     "script-loader": "^0.7",
     "selenium-server-standalone-jar": "^3.0",
@@ -133,7 +133,6 @@
   "scripts": {
     "start": "node config/webpack.server.js",
     "build": "NODE_ENV=production webpack --config config/webpack.prod.js",
-    "build:pages": "NODE_ENV=production webpack --config config/webpack.gh-pages.js",
     "analyze": "NODE_ENV=production webpack --config config/webpack.prod.js --profile --json > webpack.stats.json",
     "lint": "eslint  --ext .js --ext .jsx app/scripts test",
     "lint:styles": "stylelint app/styles/**/*.scss",

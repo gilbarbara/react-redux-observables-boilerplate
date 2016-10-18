@@ -30,7 +30,6 @@ export default class ControlledRouter extends React.Component {
           return (
             <StaticRouter
               action={action}
-              basename={location.hostname === 'gilbarbara.github.io' ? '/react-redux-observables-boilerplate' : ''}
               blockTransitions={history.block}
               key={appLocation.pathname}
               location={location}

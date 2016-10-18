@@ -3,7 +3,7 @@ const path = require('path');
 const exec = require('child_process').exec;
 const del = require('del');
 const chalk = require('chalk');
-const ghPages = require('gh-pages');
+const Rsync = require('rsync');
 
 const args = process.argv.slice(2);
 
@@ -17,42 +17,28 @@ if (!args[0]) {
   );
 }
 
-function getCommit() {
-  console.log(chalk.blue('Getting the last commit...'));
-  return new Promise((resolve, reject) => {
-    exec('git log -1 --pretty=%s && git log -1 --pretty=%b', (err, stdout) => {
-      if (err) {
-        return reject(err);
-      }
-
-      const parts = stdout.replace('\n\n', '').split('\n');
-
-      return resolve(`${(parts[0] ? parts[0] : 'Auto-generated commit')} ${new Date().toISOString()}`);
-    });
-  });
-}
-
 function publish() {
   console.log(chalk.blue('Publishing...'));
-  getCommit()
-    .then(commit => {
-      exec('cp README.md dist/', errCopy => {
-        if (errCopy) {
-          console.log(errCopy);
-          return;
-        }
-        ghPages.publish(path.join(__dirname, '../dist'), {
-          message: commit
-        }, error => {
-          if (error) {
-            console.log(chalk.red('Something went wrong...', error));
-            return;
-          }
 
-          console.log(chalk.green('Published'));
-        });
-      });
-    });
+  const destination = 'gbarbara@gilbarbara.com:/home/gbarbara/public_html/react-redux-observables-boilerplate';
+
+  const rsync = Rsync.build({
+    exclude: ['.DS_Store'],
+    progress: true,
+    source: path.join(__dirname, '..', 'dist/'),
+    flags: 'avzu',
+    shell: 'ssh',
+    destination
+  });
+
+  rsync.execute((error, code, cmd) => {
+    if (error) {
+      console.log(chalk.red('Something went wrong...', error, code, cmd));
+      process.exit(1);
+    }
+
+    console.log(chalk.green('Published'));
+  });
 }
 
 if (args[0] === 'publish') {
