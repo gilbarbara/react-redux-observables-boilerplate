@@ -37,7 +37,8 @@ export class Private extends React.Component {
         <a
           href="#cancel"
           className="btn btn-primary btn-sm btn-icon btn-icon--lg"
-          onClick={this.handleClickCancel}>
+          onClick={this.handleClickCancel}
+        >
           <i className="i-times-circle" />
           <span>Cancel</span>
         </a>

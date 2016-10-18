@@ -20,7 +20,8 @@ const Loader = ({ pulse }) => {
             cy="50"
             r="20"
             fill="none"
-            strokeWidth="2" />
+            strokeWidth="2"
+          />
         </svg>
       </div>
     );

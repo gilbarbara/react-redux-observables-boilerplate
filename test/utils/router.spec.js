@@ -9,7 +9,8 @@ describe('utils/MatchWhenAuthorized', () => {
       pattern="/private"
       location={{ pathname: '/private' }}
       component={() => (<div className="private" />)}
-      isAuthenticated={false} />);
+      isAuthenticated={false}
+    />);
 
     expect(render).toMatchSnapshot();
   });
@@ -20,7 +21,8 @@ describe('utils/MatchWhenAuthorized', () => {
       pattern="/private"
       location={{ pathname: '/private' }}
       component={() => (<div className="private" />)}
-      isAuthenticated={true} />);
+      isAuthenticated={true}
+    />);
 
     expect(render).toMatchSnapshot();
   });
@@ -33,7 +35,8 @@ describe('utils/RedirectWhenAuthorized', () => {
       pattern="/login"
       location={{ pathname: '/login' }}
       component={() => (<div className="login" />)}
-      isAuthenticated={false} />);
+      isAuthenticated={false}
+    />);
 
     expect(render).toMatchSnapshot();
   });
@@ -44,7 +47,8 @@ describe('utils/RedirectWhenAuthorized', () => {
       pattern="/login"
       location={{ pathname: '/login' }}
       component={() => (<div className="login" />)}
-      isAuthenticated={true} />);
+      isAuthenticated={true}
+    />);
 
     expect(render).toMatchSnapshot();
   });

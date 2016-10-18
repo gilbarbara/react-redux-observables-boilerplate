@@ -27,7 +27,8 @@ const Header = ({ dispatch, user }) =>
             to="/"
             className="app__header__link"
             activeOnlyWhenExact={true}
-            activeClassName="active">
+            activeClassName="active"
+          >
             Home
           </Link>
         </li>
@@ -35,7 +36,8 @@ const Header = ({ dispatch, user }) =>
           <Link
             to="/private"
             className="app__header__link"
-            activeClassName="active">
+            activeClassName="active"
+          >
             Private
           </Link>
         </li>
@@ -44,18 +46,21 @@ const Header = ({ dispatch, user }) =>
            (<a
              href="#logout"
              className="app__header__logout btn btn-sm btn-secondary btn-icon"
-             onClick={onClickLogout(dispatch)}>
+             onClick={onClickLogout(dispatch)}
+           >
              <i className="i-sign-out" />
              <span>logout</span>
            </a>) :
            (<a
              href="#login"
              className="app__header__login btn btn-sm btn-primary btn-icon"
-             onClick={onClickLogin(dispatch)}>
+             onClick={onClickLogin(dispatch)}
+           >
              <i
                className={cx({
                  'i-circle-o-notch i-spin': user.isRunning,
-                 'i-sign-in': !user.isRunning })} />
+                 'i-sign-in': !user.isRunning })}
+             />
              <span>Login</span>
            </a>)}
         </li>

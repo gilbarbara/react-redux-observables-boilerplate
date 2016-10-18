@@ -13,9 +13,11 @@ const MatchAuthorized = ({ component: Component, isAuthenticated, ...rest }) => 
         to={{
           pathname: '/login',
           state: { from: props.location.pathname, isAuthenticated },
-        }} />
+        }}
+      />
     )
-  )} />
+  )}
+  />
 );
 
 MatchAuthorized.propTypes = {
@@ -35,7 +37,8 @@ const RedirectAuthorized = ({ component: Component, isAuthenticated, ...rest }) 
     ) : (
       <Component {...props} />
     )
-  )} />
+  )}
+  />
 );
 
 RedirectAuthorized.propTypes = {

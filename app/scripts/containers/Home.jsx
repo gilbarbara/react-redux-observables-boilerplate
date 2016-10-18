@@ -26,7 +26,8 @@ export class Home extends React.Component {
             <a
               href="https://github.com/gilbarbara/react-redux-observables-boilerplate"
               className="app__home__download btn btn-lg btn-primary btn-icon"
-              target="_blank">
+              target="_blank"
+            >
               <i className="i-github" />
               <span>Download</span>
             </a>

@@ -34,7 +34,8 @@ export default class ControlledRouter extends React.Component {
               key={appLocation.pathname}
               location={location}
               onPush={history.push}
-              onReplace={history.replace}>
+              onReplace={history.replace}
+            >
               {children}
             </StaticRouter>
           );

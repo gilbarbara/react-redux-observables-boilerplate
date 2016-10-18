@@ -35,12 +35,14 @@ export class App extends React.Component {
               exactly={true}
               pattern="/login"
               component={Login}
-              isAuthenticated={user.isAuthenticated} />
+              isAuthenticated={user.isAuthenticated}
+            />
             <MatchWhenAuthorized
               exactly={true}
               pattern="/private"
               component={Private}
-              isAuthenticated={user.isAuthenticated} />
+              isAuthenticated={user.isAuthenticated}
+            />
             <Miss component={NotFound} />
           </main>
           <Footer />
