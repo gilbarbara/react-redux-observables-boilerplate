@@ -48,7 +48,7 @@ if (args[0] === 'publish') {
 if (args[0] === 'deploy') {
   const start = Date.now();
   console.log(chalk.green('Bundling...'));
-  exec('npm run build:pages', errBuild => {
+  exec('npm run build', errBuild => {
     if (errBuild) {
       console.log(chalk.red(errBuild));
       process.exit(1);
