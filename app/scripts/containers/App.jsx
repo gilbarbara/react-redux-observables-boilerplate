@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Match from 'react-router/Match';
 import Miss from 'react-router/Miss';
-
-import ControlledRouter from 'utils/ControlledRouter';
 import { MatchWhenAuthorized, RedirectWhenAuthorized } from 'utils/router';
+import ControlledRouter from 'utils/ControlledRouter';
+
 
 import Home from 'containers/Home';
 import Private from 'containers/Private';
