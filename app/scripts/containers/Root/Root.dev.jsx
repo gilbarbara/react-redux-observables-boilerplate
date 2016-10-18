@@ -5,7 +5,7 @@ import App from 'containers/App';
 
 export default class Root extends React.Component {
   static propTypes = {
-    store: React.PropTypes.object.isRequired
+    store: React.PropTypes.object.isRequired,
   };
 
   /* istanbul ignore next */

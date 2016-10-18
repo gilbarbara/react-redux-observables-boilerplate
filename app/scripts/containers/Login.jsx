@@ -9,7 +9,7 @@ const Login = ({ location: { state } }) => (
 );
 
 Login.propTypes = {
-  location: React.PropTypes.object.isRequired
+  location: React.PropTypes.object.isRequired,
 };
 
 export default Login;

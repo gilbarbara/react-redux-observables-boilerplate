@@ -15,14 +15,14 @@ export const githubState = {
     isReady: false,
     isLoading: false,
   },
-  rehydrated: false
+  rehydrated: false,
 };
 
 export default {
   github: createReducer(githubState, {
     [REHYDRATE](state, action) {
       return Object.assign({}, state, action.payload.github, {
-        rehydrated: true
+        rehydrated: true,
       });
     },
     [ActionTypes.FETCH_POPULAR_REPOS_REQUEST](state) {
@@ -35,7 +35,7 @@ export default {
         ...state.popularRepos,
         data: action.payload.data,
         isLoading: false,
-        isReady: true
+        isReady: true,
       };
 
       return { ...state, popularRepos };
@@ -46,10 +46,10 @@ export default {
         ...action.payload,
         isLoading: false,
         isReady: false,
-        error: true
+        error: true,
       };
 
       return { ...state, popularRepos };
-    }
-  })
+    },
+  }),
 };

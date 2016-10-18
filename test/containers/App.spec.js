@@ -18,17 +18,17 @@ function setup() {
         visible: false,
         message: '',
         status: '',
-        withTimeout: true
-      }
+        withTimeout: true,
+      },
     },
     user: {
-      isAuthenticated: false
-    }
+      isAuthenticated: false,
+    },
   };
 
   return shallow(<App {...props} />, {
     context: { store: mockStore() },
-    childContextTypes: { store: React.PropTypes.object.isRequired }
+    childContextTypes: { store: React.PropTypes.object.isRequired },
   });
 }
 

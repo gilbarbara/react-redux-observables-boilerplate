@@ -17,7 +17,7 @@ const reducer = combineReducers({ ...rootReducer });
 
 const logger = createLogger({
   // predicate: (getState, action) => (action.type.indexOf('_REQUEST') === -1),
-  collapsed: true
+  collapsed: true,
 });
 
 /* istanbul ignore next */
@@ -25,7 +25,7 @@ const configStore = (initialState = {}) => {
   const createStoreWithMiddleware = compose(
     applyMiddleware(thunk, epicMiddleware, logger),
     createReactotronTrackingEnhancer(Reactotron, {
-      isActionImportant: action => action.type === ActionTypes.USER_LOGIN_SUCCESS
+      isActionImportant: action => action.type === ActionTypes.USER_LOGIN_SUCCESS,
     })
   )(createStore);
 

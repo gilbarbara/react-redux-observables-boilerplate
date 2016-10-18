@@ -23,7 +23,7 @@ describe('Github', () => {
   it(`should handle ${ActionTypes.FETCH_POPULAR_REPOS_SUCCESS}`, () => {
     expect(reducers.github(undefined, {
       type: ActionTypes.FETCH_POPULAR_REPOS_SUCCESS,
-      payload: { data: [{ id: 1 }] }
+      payload: { data: [{ id: 1 }] },
     }))
       .toMatchSnapshot();
   });
@@ -31,7 +31,7 @@ describe('Github', () => {
   it(`should handle ${ActionTypes.FETCH_POPULAR_REPOS_FAILURE}`, () => {
     expect(reducers.github(undefined, {
       type: ActionTypes.FETCH_POPULAR_REPOS_FAILURE,
-      payload: { message: 'ajax error 404', status: 404 }
+      payload: { message: 'ajax error 404', status: 404 },
     })).toMatchSnapshot();
   });
 });

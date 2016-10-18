@@ -11,7 +11,7 @@ import Loader from 'components/Loader';
 export class Private extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
-    github: React.PropTypes.object.isRequired
+    github: React.PropTypes.object.isRequired,
   };
 
   shouldComponentUpdate = shouldComponentUpdate;
@@ -42,7 +42,7 @@ export class Private extends React.Component {
           <span>Cancel</span>
         </a>
       </div>),
-      loader: (<Loader />)
+      loader: (<Loader />),
     };
 
     if (popularRepos.isReady && !popularRepos.isLoading) {

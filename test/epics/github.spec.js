@@ -32,8 +32,8 @@ describe('github', () => {
         { type: ActionTypes.FETCH_POPULAR_REPOS_REQUEST },
         {
           type: ActionTypes.FETCH_POPULAR_REPOS_SUCCESS,
-          payload: { data: [{ id: 123 }] }
-        }
+          payload: { data: [{ id: 123 }] },
+        },
       ]);
 
       done();
@@ -54,8 +54,8 @@ describe('github', () => {
         {
           type: ActionTypes.FETCH_POPULAR_REPOS_FAILURE,
           payload: { message: 'ajax error 404', status: 404 },
-          error: true
-        }
+          error: true,
+        },
       ]);
 
       done();

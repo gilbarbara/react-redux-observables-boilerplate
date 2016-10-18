@@ -19,7 +19,7 @@ export class App extends React.Component {
   static propTypes = {
     app: React.PropTypes.object.isRequired,
     dispatch: React.PropTypes.func.isRequired,
-    user: React.PropTypes.object.isRequired
+    user: React.PropTypes.object.isRequired,
   };
 
   render() {
@@ -55,7 +55,7 @@ export class App extends React.Component {
 function mapStateToProps(state) {
   return {
     app: state.app,
-    user: state.user
+    user: state.user,
   };
 }
 

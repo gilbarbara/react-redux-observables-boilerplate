@@ -12,7 +12,7 @@ const MatchAuthorized = ({ component: Component, isAuthenticated, ...rest }) => 
       <Redirect
         to={{
           pathname: '/login',
-          state: { from: props.location.pathname, isAuthenticated }
+          state: { from: props.location.pathname, isAuthenticated },
         }} />
     )
   )} />
@@ -21,7 +21,7 @@ const MatchAuthorized = ({ component: Component, isAuthenticated, ...rest }) => 
 MatchAuthorized.propTypes = {
   component: React.PropTypes.func.isRequired,
   isAuthenticated: React.PropTypes.bool.isRequired,
-  location: React.PropTypes.object
+  location: React.PropTypes.object,
 };
 
 export const MatchWhenAuthorized = MatchAuthorized;
@@ -40,7 +40,7 @@ const RedirectAuthorized = ({ component: Component, isAuthenticated, ...rest }) 
 
 RedirectAuthorized.propTypes = {
   component: React.PropTypes.func.isRequired,
-  isAuthenticated: React.PropTypes.bool.isRequired
+  isAuthenticated: React.PropTypes.bool.isRequired,
 };
 
 export const RedirectWhenAuthorized = RedirectAuthorized;

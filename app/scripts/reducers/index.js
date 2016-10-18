@@ -10,5 +10,5 @@ import user from './user';
 export default {
   ...app,
   ...github,
-  ...user
+  ...user,
 };

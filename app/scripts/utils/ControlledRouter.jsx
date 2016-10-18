@@ -10,7 +10,7 @@ export default class ControlledRouter extends React.Component {
   static propTypes = {
     children: React.PropTypes.element.isRequired,
     dispatch: React.PropTypes.func.isRequired,
-    location: React.PropTypes.object.isRequired
+    location: React.PropTypes.object.isRequired,
   };
 
   shouldComponentUpdate = shouldComponentUpdate;

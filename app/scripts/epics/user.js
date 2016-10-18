@@ -16,7 +16,7 @@ export function userLogin(action$) {
     .catch(/* istanbul ignore next  */ error => Observable.of({
       type: ActionTypes.USER_LOGIN_FAILURE,
       payload: { error },
-      error: true
+      error: true,
     }));
 }
 
@@ -28,6 +28,6 @@ export function userLogout(action$) {
     .catch(/* istanbul ignore next  */ error => Observable.of({
       type: ActionTypes.USER_LOGOUT_FAILURE,
       payload: { error },
-      error: true
+      error: true,
     }));
 }

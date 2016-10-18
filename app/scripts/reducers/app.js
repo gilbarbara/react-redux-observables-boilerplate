@@ -13,10 +13,10 @@ export const appState = {
     visible: false,
     message: '',
     status: '',
-    withTimeout: true
+    withTimeout: true,
   },
   location: {},
-  rehydrated: false
+  rehydrated: false,
 };
 
 export default {
@@ -24,7 +24,7 @@ export default {
     [REHYDRATE](state, action) {
       return Object.assign({}, state, action.payload.app, {
         notifications: appState.notifications,
-        rehydrated: true
+        rehydrated: true,
       });
     },
     [ActionTypes.SHOW_ALERT](state, action) {
@@ -33,7 +33,7 @@ export default {
         visible: true,
         message: action.message,
         status: action.status,
-        withTimeout: action.withTimeout === true
+        withTimeout: action.withTimeout === true,
       };
 
       return { ...state, notifications };
@@ -42,7 +42,7 @@ export default {
       const notifications = {
         ...state.notifications,
         visible: false,
-        withTimeout: true
+        withTimeout: true,
       };
 
       return { ...state, notifications };
@@ -51,6 +51,6 @@ export default {
       const location = { ...state.location, ...action.payload.location };
 
       return { ...state, location };
-    }
-  })
+    },
+  }),
 };

@@ -30,11 +30,11 @@ const Loader = ({ pulse }) => {
 };
 
 Loader.propTypes = {
-  pulse: React.PropTypes.bool.isRequired
+  pulse: React.PropTypes.bool.isRequired,
 };
 
 Loader.defaultProps = {
-  pulse: true
+  pulse: true,
 };
 
 export default Loader;

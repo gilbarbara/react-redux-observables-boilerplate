@@ -75,7 +75,7 @@
           Object.defineProperty(map, propName, {
             enumerable: this.enumerable,
             get: getter.bind({ value: value || '' }),
-            set: setter.bind(element, name)
+            set: setter.bind(element, name),
           });
         }
       }

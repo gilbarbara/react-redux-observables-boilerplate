@@ -5,7 +5,7 @@ import Login from 'containers/Login';
 
 function setup() {
   const props = {
-    location: {}
+    location: {},
   };
 
   return mount(<Login {...props} />);
@@ -25,8 +25,8 @@ describe('Login', () => {
   it('should render the redirect location', () => {
     wrapper.setProps({
       location: {
-        state: { from: '/private' }
-      }
+        state: { from: '/private' },
+      },
     });
 
     expect(wrapper.html()).toMatchSnapshot();

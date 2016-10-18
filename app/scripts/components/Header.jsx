@@ -65,7 +65,7 @@ const Header = ({ dispatch, user }) =>
 
 Header.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
-  user: React.PropTypes.object.isRequired
+  user: React.PropTypes.object.isRequired,
 };
 
 export default Header;

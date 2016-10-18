@@ -18,11 +18,11 @@ function setup() {
             name: 'Repo',
             html_url: 'http://...',
             owner: { login: 'github' },
-            description: 'Oh Hai'
-          }
-        ]
-      }
-    }
+            description: 'Oh Hai',
+          },
+        ],
+      },
+    },
   };
 
   return mount(<Private {...props} />);
@@ -44,9 +44,9 @@ describe('Private', () => {
       github: {
         popularRepos: {
           isReady: false,
-          data: []
-        }
-      }
+          data: [],
+        },
+      },
     });
 
     wrapper.find('.btn').simulate('click');

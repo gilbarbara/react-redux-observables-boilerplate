@@ -8,7 +8,7 @@ const mockDispatch = jest.fn();
 function setup() {
   const props = {
     dispatch: mockDispatch,
-    location: {}
+    location: {},
   };
 
   return mount(<Home {...props} />);

@@ -12,8 +12,8 @@ function setup() {
   const props = {
     dispatch: mockDispatch,
     user: {
-      isAuthenticated: false
-    }
+      isAuthenticated: false,
+    },
   };
 
   return mount(<Header {...props} />);
@@ -38,8 +38,8 @@ describe('Header', () => {
   it('should handle logout click', () => {
     wrapper.setProps({
       user: {
-        isAuthenticated: true
-      }
+        isAuthenticated: true,
+      },
     });
 
     wrapper.find('.app__header__logout').simulate('click');

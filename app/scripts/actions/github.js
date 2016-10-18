@@ -12,6 +12,6 @@ import { ActionTypes } from 'constants/index';
  */
 export function fetchPopularRepos() {
   return {
-    type: ActionTypes.FETCH_POPULAR_REPOS_REQUEST
+    type: ActionTypes.FETCH_POPULAR_REPOS_REQUEST,
   };
 }

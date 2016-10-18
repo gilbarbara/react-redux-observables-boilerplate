@@ -24,7 +24,7 @@ export const ActionTypes = keyMirror({
   CANCEL_FETCH: undefined,
   LOCATION_CHANGE: undefined,
   SHOW_ALERT: undefined,
-  HIDE_ALERT: undefined
+  HIDE_ALERT: undefined,
 });
 
 /**
@@ -33,5 +33,5 @@ export const ActionTypes = keyMirror({
  */
 export const XHR = keyMirror({
   SUCCESS: undefined,
-  FAIL: undefined
+  FAIL: undefined,
 });

@@ -21,8 +21,8 @@ export function goTo(pathname, options = {}) {
     location: {
       pathname,
       search: options.search,
-      state: options.state
-    }
+      state: options.state,
+    },
   };
 }
 
@@ -47,7 +47,7 @@ export function showAlert(status, message, withTimeout = true) {
     type: ActionTypes.SHOW_ALERT,
     status,
     message,
-    withTimeout
+    withTimeout,
   };
 }
 
@@ -58,6 +58,6 @@ export function showAlert(status, message, withTimeout = true) {
  */
 export function hideAlert() {
   return {
-    type: ActionTypes.HIDE_ALERT
+    type: ActionTypes.HIDE_ALERT,
   };
 }

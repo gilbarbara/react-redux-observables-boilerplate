@@ -8,7 +8,7 @@ const mockDispatch = jest.fn();
 function setup() {
   const props = {
     app: {},
-    dispatch: mockDispatch
+    dispatch: mockDispatch,
   };
 
   return mount(<Loader {...props} />);
@@ -27,7 +27,7 @@ describe('Loader', () => {
 
   it('should render properly with rotate type', () => {
     wrapper.setProps({
-      pulse: false
+      pulse: false,
     });
 
     expect(wrapper.html()).toMatchSnapshot();

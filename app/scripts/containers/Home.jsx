@@ -8,7 +8,7 @@ import Logo from 'components/Logo';
 
 export class Home extends React.Component {
   static propTypes = {
-    dispatch: React.PropTypes.func.isRequired
+    dispatch: React.PropTypes.func.isRequired,
   };
 
   shouldComponentUpdate = shouldComponentUpdate;

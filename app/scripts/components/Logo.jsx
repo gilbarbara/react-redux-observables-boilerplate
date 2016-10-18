@@ -11,11 +11,11 @@ const Logo = ({ file }) =>
   </div>);
 
 Logo.propTypes = {
-  file: React.PropTypes.string
+  file: React.PropTypes.string,
 };
 
 Logo.defaultProps = {
-  file: 'icon'
+  file: 'icon',
 };
 
 export default Logo;
