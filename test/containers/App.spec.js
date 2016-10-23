@@ -13,13 +13,13 @@ function setup() {
     dispatch: () => {
     },
     app: {
-      location: { pathname: '/login' },
       notifications: {
         visible: false,
         message: '',
         status: '',
         withTimeout: true,
       },
+      rehydrated: true,
     },
     user: {
       isAuthenticated: false,
