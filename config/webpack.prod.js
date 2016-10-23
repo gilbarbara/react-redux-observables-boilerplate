@@ -30,7 +30,6 @@ var config = merge.smart(webpackConfig, {
     ]),
     new ExtractText('styles/app.[hash].css'),
     new HtmlPlugin({
-      appMountId: 'react',
       inject: false,
       minify: {
         removeComments: true,

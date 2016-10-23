@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="256px" height="177px" viewBox="0 0 256 177" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 40.2 (33826) - http://www.bohemiancoding.com/sketch -->
-    <title>icon</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g>
-            <polygon fill="#2234D3" points="127.9998 0.0006 -0.0002 176.2076 63.9998 176.2076 127.9998 176.2076 191.9998 176.2076 255.9998 176.2076"></polygon>
-            <polygon fill="#CD0423" points="190.6623 176.208 255.9993 176.208 128.0003 0.001"></polygon>
-            <polygon fill="#FF0090" points="127.9998 0.0006 126.8068 176.2076 191.9998 176.2076"></polygon>
-            <polygon fill="#764ABC" points="127.9998 0.0006 62.4698 176.2076 127.9998 176.2076"></polygon>
-            <polygon fill="#00D8FF" points="127.9998 0.0006 -0.0002 176.2076 63.9998 176.2076"></polygon>
-        </g>
+<svg width="256px" height="177px" viewBox="0 0 256 177" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
+    <g>
+        <polygon fill="#CD0423" points="128.0007 -0.0004 190.6627 176.2066 255.9997 176.2066" class="path-4"></polygon>
+        <polygon fill="#FF0090" points="127.9998 -0.0004 126.8068 176.2066 191.9998 176.2066" class="path-3"></polygon>
+        <polygon fill="#764ABC" points="127.9998 -0.0004 62.4698 176.2066 127.9998 176.2066" class="path-2"></polygon>
+        <polygon fill="#00D8FF" points="-0.0002 176.2066 63.9998 176.2066 127.9998 -0.0004" class="path-1"></polygon>
     </g>
 </svg>
