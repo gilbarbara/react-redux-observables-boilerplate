@@ -1,6 +1,7 @@
 import { applyMiddleware, createStore, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { createEpicMiddleware } from 'redux-observable';
+import { routerReducer } from 'utils/react-router-redux';
 
 import createLogger from 'redux-logger';
 import Reactotron from 'reactotron-react-js';
@@ -13,7 +14,7 @@ import { ActionTypes } from 'constants/index';
 
 const epicMiddleware = createEpicMiddleware(rootEpic);
 
-const reducer = combineReducers({ ...rootReducer });
+const reducer = combineReducers({ ...rootReducer, router: routerReducer });
 
 const logger = createLogger({
   // predicate: (getState, action) => (action.type.indexOf('_REQUEST') === -1),
