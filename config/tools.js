@@ -28,7 +28,7 @@ function publish() {
     source: path.join(__dirname, '..', 'dist/'),
     flags: 'avzu',
     shell: 'ssh',
-    destination
+    destination,
   });
 
   rsync.execute((error, code, cmd) => {

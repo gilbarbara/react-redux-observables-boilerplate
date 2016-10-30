@@ -10,7 +10,8 @@ ratings:
   - "**.js"
   - "**.scss"
 exclude_paths:
+  - node_modules/**/*
   - coverage/**/*
   - dist/**/*
   - documentation/**/*
-  - node_modules/**/*
+
