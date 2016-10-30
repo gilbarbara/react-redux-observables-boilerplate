@@ -15,33 +15,41 @@ var NPMPackage = require('./../package');
 var config = merge.smart(webpackConfig, {
   entry: {
     'scripts/app': './scripts/index.jsx',
-    'scripts/modernizr': './scripts/vendor/modernizr-custom.js'
+    'scripts/modernizr': './scripts/vendor/modernizr-custom.js',
   },
   output: {
     filename: '[name].[hash].js',
-    path: path.join(__dirname, '../dist')
+    path: path.join(__dirname, '../dist'),
   },
   devtool: 'source-map',
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        loader: ExtractText.extract('css?sourceMap!postcss?pack=custom!sass?sourceMap'),
+      },
+    ],
+  },
   plugins: [
     new CleanPlugin(['dist'], { root: path.join(__dirname, '../') }),
     new CopyPlugin([
       { from: '.htaccess' },
-      { from: 'robots.txt' }
+      { from: 'robots.txt' },
     ]),
     new ExtractText('styles/app.[hash].css'),
     new HtmlPlugin({
       inject: false,
       minify: {
         removeComments: true,
-        collapseWhitespace: true
+        collapseWhitespace: true,
       },
       mobile: true,
       template: './index.ejs',
-      title: NPMPackage.title
+      title: NPMPackage.title,
     }),
     new webpack.optimize.DedupePlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+      'process.env.NODE_ENV': JSON.stringify('production'),
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
@@ -62,22 +70,22 @@ var config = merge.smart(webpackConfig, {
                   'opera >= 23',
                   'ios >= 7',
                   'android >= 4.4',
-                  'bb >= 10'
-                ]
-              })
-            ]
+                  'bb >= 10',
+                ],
+              }),
+            ],
           };
-        }
-      }
+        },
+      },
     }),
     new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true
+      sourceMap: true,
     }),
     new OfflinePlugin({
       relativePaths: false,
-      publicPath: '/'
-    })
-  ]
+      publicPath: '/',
+    }),
+  ],
 });
 
 module.exports = config;
