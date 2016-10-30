@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icon-font-v3';
+  font-style: normal;
+  font-weight: normal;
   src: url('#{$font-path}icon-font-v3.ttf?hiqvyh') format('truetype'),
   url('#{$font-path}icon-font-v3.woff?hiqvyh') format('woff'),
   url('#{$font-path}icon-font-v3.svg?hiqvyh#icon-font-v3') format('svg');
-  font-weight: normal;
-  font-style: normal;
 }
 
 [class^='i-'],
@@ -36,7 +36,6 @@
 }
 
 // Rotated & Flipped Icons
-// -------------------------
 
 .i-rotate-90 {
   transform: rotate(90deg);
@@ -59,7 +58,6 @@
 }
 
 // Hook for IE8-9
-// -------------------------
 
 :root .i-rotate-90,
 :root .i-rotate-180,

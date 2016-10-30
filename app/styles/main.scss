@@ -1,8 +1,11 @@
 // *** Vendor
 @import '~sass-mediaqueries/media-queries';
 
+// *** Variables
+@import 'variables/common';
+@import 'variables/bootstrap';
+
 // *** Base
-@import 'base/variables';
 @import 'base/animations';
 @import 'base/icons';
 @import 'base/typography';
