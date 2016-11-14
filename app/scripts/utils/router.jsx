@@ -6,16 +6,14 @@ const MatchAuthorized = ({ component: Component, isAuthenticated, ...rest }) => 
   <Match
     {...rest}
     render={props => (
-    isAuthenticated ? (
-      <Component {...props} />
-    ) : (
-      <Redirect
-        to={{
-          pathname: '/login',
-          state: { from: props.location.pathname, isAuthenticated },
-        }}
-      />
-    )
+    isAuthenticated ?
+    (<Component {...props} />) :
+    (<Redirect
+      to={{
+        pathname: '/login',
+        state: { from: props.location.pathname, isAuthenticated },
+      }}
+    />)
   )}
   />
 );
@@ -32,11 +30,9 @@ const RedirectAuthorized = ({ component: Component, isAuthenticated, ...rest }) 
   <Match
     {...rest}
     render={props => (
-    isAuthenticated ? (
-      <Redirect to="/private" />
-    ) : (
-      <Component {...props} />
-    )
+    isAuthenticated ?
+    (<Redirect to="/private" />) :
+    (<Component {...props} />)
   )}
   />
 );

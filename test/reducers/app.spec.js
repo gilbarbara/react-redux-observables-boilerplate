@@ -24,8 +24,4 @@ describe('App', () => {
   it(`should handle ${ActionTypes.HIDE_ALERT}`, () => {
     expect(reducers.app(undefined, Actions.hideAlert()).notifications).toMatchSnapshot();
   });
-
-  it(`should handle ${ActionTypes.LOCATION_CHANGE}`, () => {
-    expect(reducers.app(undefined, Actions.setLocation({ pathname: '/' }))).toMatchSnapshot();
-  });
 });

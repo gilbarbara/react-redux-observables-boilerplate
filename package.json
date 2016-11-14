@@ -39,6 +39,7 @@
     "react-inlinesvg": "^0.5",
     "react-redux": "^4.4",
     "react-router": "^4.0.0-alpha",
+    "react-router-addons-controlled": "0.0.1",
     "redux": "^3.6",
     "redux-observable": "^0.12",
     "redux-persist": "^3.5",

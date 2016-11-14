@@ -1,1 +1,1 @@
-exports[`App should render properly 1`] = `"<ConnectedRouter />"`;
+exports[`App should render properly 1`] = `"<ReduxRouter />"`;

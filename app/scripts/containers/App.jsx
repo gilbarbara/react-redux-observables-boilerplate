@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Match from 'react-router/Match';
 import Miss from 'react-router/Miss';
 import { MatchWhenAuthorized, RedirectWhenAuthorized } from 'utils/router';
-import { ConnectedRouter } from 'utils/react-router-redux';
+import Router from 'utils/ReduxRouter';
 
 import Home from 'containers/Home';
 import Private from 'containers/Private';
@@ -19,16 +19,17 @@ export class App extends React.Component {
   static propTypes = {
     app: React.PropTypes.object.isRequired,
     dispatch: React.PropTypes.func.isRequired,
+    router: React.PropTypes.object.isRequired,
     user: React.PropTypes.object.isRequired,
   };
 
   render() {
-    const { app, dispatch, user } = this.props;
+    const { app, dispatch, router, user } = this.props;
     let html = (<Loader />);
 
     if (app.rehydrated) {
       html = (
-        <ConnectedRouter>
+        <Router dispatch={dispatch} router={router}>
           <div key="app" className="app">
             <Header dispatch={dispatch} user={user} />
             <main className="app__main">
@@ -50,7 +51,7 @@ export class App extends React.Component {
             <Footer />
             <SystemNotifications dispatch={dispatch} app={app} />
           </div>
-        </ConnectedRouter>
+        </Router>
       );
     }
 
@@ -62,6 +63,7 @@ export class App extends React.Component {
 function mapStateToProps(state) {
   return {
     app: state.app,
+    router: state.router,
     user: state.user,
   };
 }

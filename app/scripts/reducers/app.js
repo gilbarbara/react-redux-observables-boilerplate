@@ -15,7 +15,6 @@ export const appState = {
     status: '',
     withTimeout: true,
   },
-  location: {},
   rehydrated: false,
 };
 
@@ -46,11 +45,6 @@ export default {
       };
 
       return { ...state, notifications };
-    },
-    [ActionTypes.LOCATION_CHANGE](state, action) {
-      const location = { ...state.location, ...action.payload.location };
-
-      return { ...state, location };
     },
   }),
 };

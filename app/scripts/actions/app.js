@@ -2,7 +2,7 @@
  * @module Actions/App
  * @desc App Actions
  */
-import { ActionTypes } from 'constants/index';
+import { ActionTypes, LOCATION_CHANGE } from 'constants/index';
 
 /**
  * Change route path.
@@ -17,20 +17,14 @@ import { ActionTypes } from 'constants/index';
  */
 export function goTo(pathname, options = {}) {
   return {
-    type: ActionTypes.LOCATION_CHANGE,
+    type: LOCATION_CHANGE,
+    action: 'PUSH',
     location: {
       pathname,
       search: options.search,
       state: options.state,
     },
   };
-}
-
-export function setLocation(location) {
-  return ({
-    type: ActionTypes.LOCATION_CHANGE,
-    payload: { location },
-  });
 }
 
 /**

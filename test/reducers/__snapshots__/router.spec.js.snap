@@ -1,0 +1,25 @@
+exports[`Router should handle @@router/LOCATION_CHANGE 1`] = `
+Object {
+  "action": "PUSH",
+  "location": Object {
+    "hash": "",
+    "key": undefined,
+    "pathname": "/",
+    "search": undefined,
+    "state": undefined,
+  },
+}
+`;
+
+exports[`Router should return the initial state 1`] = `
+Object {
+  "action": "POP",
+  "location": Object {
+    "hash": "",
+    "key": undefined,
+    "pathname": "/",
+    "search": "",
+    "state": undefined,
+  },
+}
+`;

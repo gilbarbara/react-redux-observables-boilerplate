@@ -3,56 +3,57 @@ import { shallow } from 'enzyme';
 
 import { App } from 'containers/App';
 import Header from 'components/Header';
-import Footer from 'components/Footer';
+import Loader from 'components/Loader';
 import SystemNotifications from 'components/SystemNotifications';
 
 import mockStore from '../__setup__/mockedStore';
 
-function setup() {
-  const props = {
-    dispatch: () => {
+const props = {
+  dispatch: () => {
+  },
+  app: {
+    rehydrated: false,
+  },
+  router: {
+    action: 'POP',
+    location: {
+      pathname: '/',
     },
-    app: {
-      notifications: {
-        visible: false,
-        message: '',
-        status: '',
-        withTimeout: true,
-      },
-      rehydrated: true,
-    },
-    user: {
-      isAuthenticated: false,
-    },
-  };
+  },
+  user: {
+    isAuthenticated: false,
+  },
+};
 
-  return shallow(<App {...props} />, {
+function setup(ownProps = props) {
+  return shallow(<App {...ownProps} />, {
     context: { store: mockStore() },
     childContextTypes: { store: React.PropTypes.object.isRequired },
   });
 }
 
 describe('App', () => {
-  const wrapper = setup();
+  let wrapper = setup();
 
   it('should be a Component', () => {
     expect(wrapper.instance() instanceof React.Component).toBe(true);
   });
 
-  it('should have Header', () => {
-    expect(wrapper.find(Header).length).toBe(1);
-  });
-
-  it('should have Footer', () => {
-    expect(wrapper.find(Footer).length).toBe(1);
-  });
-
-  it('should have SystemNotifications', () => {
-    expect(wrapper.find(SystemNotifications).length).toBe(1);
+  it('should wait for REHYDRATE', () => {
+    expect(wrapper.find('.app').length).toBe(0);
+    expect(wrapper.find(Loader).length).toBe(1);
   });
 
   it('should render properly', () => {
-    expect(wrapper.find('.app__main').length).toBe(1);
-    expect(wrapper.text()).toMatchSnapshot();
+    wrapper = setup({
+      ...props,
+      app: {
+        rehydrated: true,
+      },
+    });
+
+    expect(wrapper.find('.app').length).toBe(1);
+    expect(wrapper.find(SystemNotifications).length).toBe(1);
+    expect(wrapper.find(Header).length).toBe(1);
   });
 });
