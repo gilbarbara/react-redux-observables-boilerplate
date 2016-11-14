@@ -82,16 +82,16 @@ $position: left) {
     $opt: map-get($opts, $size);
     $padding: if($opt, $opt, $value);
 
-    @if ($size == xs) {
+    @include min-screen(breakpoint-min($size)) {
       padding-left: $padding;
       padding-right: $padding;
-    }
 
-    @include min-screen(breakpoint-min($size)) {
       @if ($size == xl) {
         max-width: 1440px;
       }
+    }
 
+    @if ($size == xs) {
       padding-left: $padding;
       padding-right: $padding;
     }
