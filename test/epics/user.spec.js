@@ -1,6 +1,6 @@
 import rootEpic from 'epics';
 import { ActionTypes } from 'constants/index';
-import mockStore, { epicMiddleware } from '../lib/mockedStore';
+import mockStore, { epicMiddleware } from '../__setup__/mockedStore';
 
 describe('user', () => {
   let store;

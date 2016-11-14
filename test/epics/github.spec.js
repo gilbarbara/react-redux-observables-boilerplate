@@ -1,7 +1,7 @@
 import xhrMock from 'xhr-mock';
 import { ActionTypes } from 'constants/index';
 import rootEpic from 'epics';
-import mockStore, { epicMiddleware } from '../lib/mockedStore';
+import mockStore, { epicMiddleware } from '../__setup__/mockedStore';
 
 describe('github', () => {
   let store;
