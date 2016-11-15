@@ -14,7 +14,7 @@ import { AppContainer } from 'react-hot-loader';
 import store from 'store';
 import '../styles/main.scss';
 
-function renderApp(RootComponent) {
+export function renderApp(RootComponent) {
   const target = document.getElementById('react');
 
   /* istanbul ignore if */

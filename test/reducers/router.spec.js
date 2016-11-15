@@ -1,5 +1,3 @@
-import { REHYDRATE } from 'redux-persist/constants';
-
 import reducers from 'reducers';
 import * as Actions from 'actions';
 import { LOCATION_CHANGE } from 'constants/index';
