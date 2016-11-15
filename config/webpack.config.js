@@ -15,6 +15,9 @@ var config = {
     modules: [path.join(__dirname, '../app', 'scripts'), 'node_modules'],
     extensions: ['.js', '.jsx', '.json'],
   },
+  resolveLoader: {
+    moduleExtensions: ['-loader'],
+  },
   entry: {},
   output: {
     filename: '[name].[hash].js',

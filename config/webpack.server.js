@@ -69,9 +69,7 @@ var config = merge.smart(webpackConfig, {
         test: /\.jsx?$/,
         use: ['eslint'],
         enforce: 'pre',
-        include: [
-          path.join(__dirname, '../app', 'scripts'),
-        ],
+        exclude: /node_modules/,
       },
       {
         test: /\.scss$/,
