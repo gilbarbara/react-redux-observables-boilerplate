@@ -26,7 +26,7 @@ var config = merge.smart(webpackConfig, {
     rules: [
       {
         test: /\.scss$/,
-        loader: ExtractText.extract('css?sourceMap!postcss?pack=custom!sass?sourceMap'),
+        loader: ExtractText.extract('css?sourceMap&-autoprefixer!postcss?pack=custom!sass?sourceMap'),
       },
     ],
   },
