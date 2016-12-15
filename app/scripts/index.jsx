@@ -14,6 +14,11 @@ import { AppContainer } from 'react-hot-loader';
 import store from 'store';
 import '../styles/main.scss';
 
+/* istanbul ignore next */
+if (process.env.production) {
+  require('offline-plugin/runtime').install();
+}
+
 export function renderApp(RootComponent) {
   const target = document.getElementById('react');
 
