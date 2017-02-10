@@ -1,3 +1,5 @@
+$speed: 1;
+
 .app__logo {
   display: inline-block;
 
@@ -9,5 +11,39 @@
       height: auto;
       max-height: 100%;
     }
+  }
+
+  path {
+    animation: swap-colors #{$speed * 4}s infinite;
+  }
+
+  .path-2 {
+    animation-delay: #{$speed}s;
+  }
+
+  .path-3 {
+    animation-delay: #{$speed * 2}s;
+  }
+
+  .path-4 {
+    animation-delay: #{$speed * 3}s;
+  }
+}
+
+@keyframes swap-colors {
+  0% {
+    fill: #00d8ff;
+  }
+
+  25% {
+    fill: #764abc;
+  }
+
+  50% {
+    fill: #ff0090;
+  }
+
+  75% {
+    fill: #cd0423;
   }
 }
