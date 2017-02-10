@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 
 import { login, logOut } from 'actions';
-import Link from 'react-router/Link';
+import { NavLink } from 'react-router-dom';
 
 const onClickLogin = dispatch =>
   e => {
@@ -23,23 +23,23 @@ const Header = ({ dispatch, user }) =>
     <div className="app__container">
       <ul className="app__header__menu">
         <li>
-          <Link
+          <NavLink
             to="/"
             className="app__header__link"
-            activeOnlyWhenExact={true}
-            activeClassName="active"
+            activeClassName="is-active"
+            exact
           >
             Home
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link
+          <NavLink
             to="/private"
             className="app__header__link"
-            activeClassName="active"
+            activeClassName="is-active"
           >
             Private
-          </Link>
+          </NavLink>
         </li>
         <li>
           {user.isAuthenticated ?

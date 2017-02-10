@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Match from 'react-router/Match';
-import Miss from 'react-router/Miss';
-import { MatchWhenAuthorized, RedirectWhenAuthorized } from 'utils/router';
-import Router from 'utils/ReduxRouter';
+import { Switch, Route } from 'react-router-dom';
+import Router from 'modules/ReduxRouter';
+import RedirectWhenUnauthorized from 'modules/RedirectWhenUnauthorized';
+import RouteWhenAuthorized from 'modules/RouteWhenAuthorized';
 
 import Home from 'containers/Home';
 import Private from 'containers/Private';
@@ -33,20 +33,22 @@ export class App extends React.Component {
           <div key="app" className="app">
             <Header dispatch={dispatch} user={user} />
             <main className="app__main">
-              <Match exactly={true} pattern="/" component={Home} />
-              <RedirectWhenAuthorized
-                exactly={true}
-                pattern="/login"
-                component={Login}
-                isAuthenticated={user.isAuthenticated}
-              />
-              <MatchWhenAuthorized
-                exactly={true}
-                pattern="/private"
-                component={Private}
-                isAuthenticated={user.isAuthenticated}
-              />
-              <Miss component={NotFound} />
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <RedirectWhenUnauthorized
+                  component={Login}
+                  isAuthenticated={user.isAuthenticated}
+                  path="/login"
+                  exact
+                />
+                <RouteWhenAuthorized
+                  component={Private}
+                  isAuthenticated={user.isAuthenticated}
+                  path="/private"
+                  exact
+                />
+                <Route component={NotFound} />
+              </Switch>
             </main>
             <Footer />
             <SystemNotifications dispatch={dispatch} app={app} />
