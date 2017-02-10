@@ -1,13 +1,13 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-const mockDispatch = jest.fn();
-jest.mock('react-router/Link', () =>
+import Header from 'components/Header';
+
+jest.mock('react-router-dom/NavLink', () =>
   (({ to, children }) => (<a href={to}>{children}</a>))
 );
 
-const Header = require('components/Header').default;
-
+const mockDispatch = jest.fn();
 function setup() {
   const props = {
     dispatch: mockDispatch,

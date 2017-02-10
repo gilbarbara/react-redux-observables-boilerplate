@@ -22,7 +22,7 @@ if (process.env.production) {
 export function renderApp(RootComponent) {
   const target = document.getElementById('react');
 
-  /* istanbul ignore if */
+  /* istanbul ignore next */
   if (target) {
     ReactDOM.render(
       <AppContainer>

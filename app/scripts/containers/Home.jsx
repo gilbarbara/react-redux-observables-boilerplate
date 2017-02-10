@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import SVG from 'react-inlinesvg';
 import { shouldComponentUpdate } from 'utils/helpers';
+
 import config from 'config';
 
 import Logo from 'components/Logo';

@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 
 import { appState } from 'reducers/app';
-import { SystemNotifications } from 'components/SystemNotifications';
+import SystemNotifications from 'components/SystemNotifications';
 
 const mockDispatch = jest.fn();
 

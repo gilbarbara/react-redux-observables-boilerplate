@@ -3,7 +3,7 @@ import cx from 'classnames';
 
 import { hideAlert } from 'actions';
 
-export const SystemNotifications = ({ app, dispatch }) => {
+const SystemNotifications = ({ app, dispatch }) => {
   let hideTimeout;
 
   const hideNotification = () => {

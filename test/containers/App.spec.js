@@ -2,11 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { App } from 'containers/App';
-import Header from 'components/Header';
-import Loader from 'components/Loader';
-import SystemNotifications from 'components/SystemNotifications';
-
-import mockStore from '../__setup__/mockedStore';
 
 const props = {
   dispatch: () => {
@@ -26,10 +21,7 @@ const props = {
 };
 
 function setup(ownProps = props) {
-  return shallow(<App {...ownProps} />, {
-    context: { store: mockStore() },
-    childContextTypes: { store: React.PropTypes.object.isRequired },
-  });
+  return shallow(<App {...ownProps} />);
 }
 
 describe('App', () => {
@@ -41,7 +33,7 @@ describe('App', () => {
 
   it('should wait for REHYDRATE', () => {
     expect(wrapper.find('.app').length).toBe(0);
-    expect(wrapper.find(Loader).length).toBe(1);
+    expect(wrapper.find('Loader').length).toBe(1);
   });
 
   it('should render properly', () => {
@@ -53,7 +45,15 @@ describe('App', () => {
     });
 
     expect(wrapper.find('.app').length).toBe(1);
-    expect(wrapper.find(SystemNotifications).length).toBe(1);
-    expect(wrapper.find(Header).length).toBe(1);
+    expect(wrapper.find('Header').length).toBe(1);
+    expect(wrapper.find('Footer').length).toBe(1);
+    expect(wrapper.find('SystemNotifications').length).toBe(1);
+  });
+
+  it('should have all the Router components', () => {
+    expect(wrapper.find('ReduxRouter').length).toBe(1);
+    expect(wrapper.find('Route').length).toBe(2);
+    expect(wrapper.find('RedirectWhenUnauthorized').length).toBe(1);
+    expect(wrapper.find('RouteWhenAuthorized').length).toBe(1);
   });
 });
