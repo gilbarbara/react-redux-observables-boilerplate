@@ -48,7 +48,17 @@ var config = {
         test: /\.(jpe?g|png|gif|svg|ico)$/i,
         use: [
           'file?hash=sha512&digest=hex' + (isProd ? '&name=media/[name].[ext]' : ''),
-          'image-webpack?bypassOnDebug=false&optimizationLevel=7&interlaced=false',
+          {
+            loader: 'image-webpack',
+            query: {
+              optipng: {
+                optimizationLevel: 5,
+              },
+              pngquant: {
+                quality: '75-90',
+              },
+            },
+          },
         ],
         include: /media/,
       },
@@ -58,7 +68,7 @@ var config = {
       },
       {
         test: /\.modernizrrc$/,
-        use: ['modernizr'],
+        use: ['expose?Modernizr', 'modernizr', 'json'],
       },
       {
         test: /\.md$/,
@@ -67,7 +77,7 @@ var config = {
     ],
   },
   plugins: [
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.LoaderOptionsPlugin({
       options: {
         context: '/',
@@ -77,7 +87,7 @@ var config = {
             custom: [
               autoprefixer({
                 browsers: [
-                  'ie >= 9',
+                  'ie >= 11',
                   'ie_mob >= 10',
                   'ff >= 30',
                   'chrome >= 34',
