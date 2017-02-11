@@ -1,8 +1,8 @@
+// @flow
 /**
  * @namespace Constants
  * @desc App constants
  */
-
 
 import keyMirror from 'fbjs/lib/keyMirror';
 
@@ -10,7 +10,7 @@ import keyMirror from 'fbjs/lib/keyMirror';
  * @constant {Object} ActionTypes
  * @memberof Constants
  */
-export const ActionTypes = keyMirror({
+export const ActionTypes: Object = keyMirror({
   USER_LOGIN_REQUEST: undefined,
   USER_LOGIN_SUCCESS: undefined,
   USER_LOGIN_FAILURE: undefined,
@@ -30,7 +30,7 @@ export const ActionTypes = keyMirror({
  * @constant {Object} XHR
  * @memberof Constants
  */
-export const XHR = keyMirror({
+export const XHR: Object = keyMirror({
   SUCCESS: undefined,
   FAIL: undefined,
 });
@@ -38,4 +38,4 @@ export const XHR = keyMirror({
 /**
  * @constant {string} LOCATION_CHANGE
  */
-export const LOCATION_CHANGE = '@@router/LOCATION_CHANGE';
+export const LOCATION_CHANGE: string = '@@router/LOCATION_CHANGE';

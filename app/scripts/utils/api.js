@@ -18,7 +18,7 @@ import { XHR } from 'constants/index';
  *
  * @returns {Promise}
  */
-export function request(action:Object = {}) {
+export function request(action: Object = {}): Promise<Object | string> {
   const errors = [];
 
   if (!action.method) {
@@ -37,10 +37,11 @@ export function request(action:Object = {}) {
     throw new Error(`Error! You must pass \`${errors.join('`, `')}\``);
   }
 
-  const headers = Object.assign({}, {
+  const headers = {
+    ...action.headers,
     Accept: 'application/json',
     'Content-Type': 'application/json',
-  }, action.headers);
+  };
 
   return new Promise((resolve, reject) => {
     const params = {
@@ -55,8 +56,9 @@ export function request(action:Object = {}) {
     fetch(action.endpoint, params)
       .then(response => {
         if (response.status >= 400) {
-          const error = new Error(response.statusText);
+          const error = new Error(response);
           error.response = response;
+
           throw error;
         } else {
           return response;

@@ -1,3 +1,4 @@
+// @flow
 /**
  * @module Actions/App
  * @desc App Actions
@@ -15,7 +16,7 @@ import { ActionTypes, LOCATION_CHANGE } from 'constants/index';
  *
  * @returns {function}
  */
-export function goTo(pathname, options = {}) {
+export function goTo(pathname: string, options: Object = {}) {
   return {
     type: LOCATION_CHANGE,
     action: 'PUSH',
@@ -36,7 +37,7 @@ export function goTo(pathname, options = {}) {
  *
  * @returns {Object}
  */
-export function showAlert(status, message, withTimeout = true) {
+export function showAlert(status: string, message: string, withTimeout: boolean = true) {
   return {
     type: ActionTypes.SHOW_ALERT,
     status,

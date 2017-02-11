@@ -1,3 +1,4 @@
+// @flow
 /**
  * @module Actions/Github
  * @desc Actions for Github

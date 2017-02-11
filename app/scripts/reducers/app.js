@@ -1,3 +1,4 @@
+// @flow
 /**
  * @module Reducers/App
  * @desc App Reducer

@@ -1,3 +1,4 @@
+// @flow
 /**
  * @module Actions/Root
  * @desc Actions Root
