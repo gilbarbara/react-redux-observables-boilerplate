@@ -5,24 +5,6 @@
  * @module Helpers
  */
 
-import shallowEqual from 'fbjs/lib/shallowEqual';
-
-/**
- * shouldComponentUpdate with context
- *
- * @param {Object} instance
- * @param {Object} nextProps
- * @param {Object} nextState
- * @param {Object} nextContext
- *
- * @returns {boolean}
- */
-export function shouldComponentUpdate(instance: Object, nextProps: Object, nextState: Object, nextContext: Object) {
-  return !shallowEqual(instance.props, nextProps)
-    || !shallowEqual(instance.state, nextState)
-    || !shallowEqual(instance.context, nextContext);
-}
-
 /**
  * Generate reducer.
  *

@@ -1,20 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { autobind } from 'core-decorators';
-import { shouldComponentUpdate } from 'utils/helpers';
 
 import { ActionTypes } from 'constants/index';
 import { fetchPopularRepos } from 'actions';
 
 import Loader from 'components/Loader';
 
-export class Private extends React.Component {
+export class Private extends React.PureComponent {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
     github: React.PropTypes.object.isRequired,
   };
-
-  shouldComponentUpdate = shouldComponentUpdate;
 
   componentWillMount() {
     const { dispatch } = this.props;

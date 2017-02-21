@@ -1,18 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import SVG from 'react-inlinesvg';
-import { shouldComponentUpdate } from 'utils/helpers';
 
 import config from 'config';
 
 import Logo from 'components/Logo';
 
-export class Home extends React.Component {
+export class Home extends React.PureComponent {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
   };
-
-  shouldComponentUpdate = shouldComponentUpdate;
 
   render() {
     return (
