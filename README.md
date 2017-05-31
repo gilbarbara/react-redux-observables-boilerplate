@@ -8,26 +8,24 @@ React-Redux-Observables Boilerplate
 
 ### Provides
 - react ^15.x
-- react-router ^2.x
+- react-router ^4.x
 - redux ^3.x
-- redux-observable ^0.12
-- rxjs ^5.0
+- redux-observable ^0.14
+- rxjs ^5.x
 
 ### Building
-- webpack ^2.1-beta
+- webpack ^2.x
 
 `npm run build`
 
 ### Development
-- webpack-dev-server ^2.1-beta
+- webpack-dev-server ^2.x
 - react-hot-loader ^3.0-beta
-- redux-devtools ^3.x
-- reactotron ^1.x (it can be enable in config.js)
 
 `npm start`
 
 ### Tests
-- jest ^15.x
+- jest ^20.x
 - enzyme ^2.x
 
 `npm test`  
@@ -35,11 +33,11 @@ React-Redux-Observables Boilerplate
 
 ### Browser Automation
 - nightwatch ^0.9
-- selenium ^2.53
+- selenium ^3.4
 
 `npm run test:ui` (with dev-server already running)  
 `npm run test:ui:start` (start dev-server, run tests and exit) 
 
 ### Requirements
-- node `^6.x`
-- npm `^3.x`
+- node `^7.x`
+- npm `^4.x`
