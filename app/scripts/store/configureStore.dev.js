@@ -3,13 +3,9 @@ import thunk from 'redux-thunk';
 import { createEpicMiddleware } from 'redux-observable';
 
 import createLogger from 'redux-logger';
-import Reactotron from 'reactotron-react-js';
-import createReactotronTrackingEnhancer from 'reactotron-redux';
 
 import rootEpic from 'epics';
 import rootReducer from 'reducers';
-
-import { ActionTypes } from 'constants/index';
 
 const epicMiddleware = createEpicMiddleware(rootEpic);
 
@@ -23,10 +19,7 @@ const logger = createLogger({
 /* istanbul ignore next */
 const configStore = (initialState = {}) => {
   const createStoreWithMiddleware = compose(
-    applyMiddleware(thunk, epicMiddleware, logger),
-    createReactotronTrackingEnhancer(Reactotron, {
-      isActionImportant: action => action.type === ActionTypes.USER_LOGIN_SUCCESS,
-    })
+    applyMiddleware(thunk, epicMiddleware, logger)
   )(createStore);
 
   const store = createStoreWithMiddleware(reducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
