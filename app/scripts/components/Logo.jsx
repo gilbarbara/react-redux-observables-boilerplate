@@ -1,5 +1,6 @@
 import React from 'react';
 import Isvg from 'react-inlinesvg';
+import PropTypes from 'prop-types';
 
 import config from 'config';
 
@@ -11,7 +12,7 @@ const Logo = ({ file }) =>
   </div>);
 
 Logo.propTypes = {
-  file: React.PropTypes.string,
+  file: PropTypes.string,
 };
 
 Logo.defaultProps = {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 import { hideAlert } from 'actions';
@@ -50,8 +51,8 @@ const SystemNotifications = ({ app, dispatch }) => {
 };
 
 SystemNotifications.propTypes = {
-  app: React.PropTypes.object.isRequired,
-  dispatch: React.PropTypes.func.isRequired,
+  app: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default SystemNotifications;

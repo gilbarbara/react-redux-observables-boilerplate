@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 import { login, logOut } from 'actions';
@@ -69,8 +70,8 @@ const Header = ({ dispatch, user }) =>
   </header>);
 
 Header.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  user: React.PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 export default Header;

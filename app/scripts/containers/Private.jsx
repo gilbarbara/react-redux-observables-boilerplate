@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { autobind } from 'core-decorators';
 
@@ -9,8 +10,8 @@ import Loader from 'components/Loader';
 
 export class Private extends React.PureComponent {
   static propTypes = {
-    dispatch: React.PropTypes.func.isRequired,
-    github: React.PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    github: PropTypes.object.isRequired,
   };
 
   componentWillMount() {

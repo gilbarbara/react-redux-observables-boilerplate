@@ -1,6 +1,7 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
+import PropTypes from 'prop-types';
 
 import { LOCATION_CHANGE } from '../constants/index';
 
@@ -8,8 +9,8 @@ export const history = createBrowserHistory();
 
 class ReduxRouter extends React.Component {
   static propTypes = {
-    children: React.PropTypes.node.isRequired,
-    dispatch: React.PropTypes.func.isRequired,
+    children: PropTypes.node.isRequired,
+    dispatch: PropTypes.func.isRequired,
   };
 
   componentDidMount() {

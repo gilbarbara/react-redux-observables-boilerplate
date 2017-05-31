@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import SVG from 'react-inlinesvg';
 
@@ -8,7 +9,7 @@ import Logo from 'components/Logo';
 
 export class Home extends React.PureComponent {
   static propTypes = {
-    dispatch: React.PropTypes.func.isRequired,
+    dispatch: PropTypes.func.isRequired,
   };
 
   render() {

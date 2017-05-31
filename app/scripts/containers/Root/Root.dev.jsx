@@ -1,11 +1,12 @@
 import 'vendor/reactotronConfig';
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import App from 'containers/App';
 
 export default class Root extends React.Component {
   static propTypes = {
-    store: React.PropTypes.object.isRequired,
+    store: PropTypes.object.isRequired,
   };
 
   /* istanbul ignore next */

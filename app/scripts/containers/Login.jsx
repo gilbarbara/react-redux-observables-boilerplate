@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Login = ({ location: { state } }) => (
   <div key="login" className="app__login app__route">
@@ -9,7 +10,7 @@ const Login = ({ location: { state } }) => (
 );
 
 Login.propTypes = {
-  location: React.PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export default Login;

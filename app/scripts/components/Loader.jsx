@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Loader = ({ pulse }) => {
   let html;
@@ -30,7 +31,7 @@ const Loader = ({ pulse }) => {
 };
 
 Loader.propTypes = {
-  pulse: React.PropTypes.bool.isRequired,
+  pulse: PropTypes.bool.isRequired,
 };
 
 Loader.defaultProps = {

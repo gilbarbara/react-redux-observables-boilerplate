@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
 const RedirectWhenUnauthorized = ({ component: Component, isAuthenticated, ...rest }) => (
@@ -13,8 +14,8 @@ const RedirectWhenUnauthorized = ({ component: Component, isAuthenticated, ...re
 );
 
 RedirectWhenUnauthorized.propTypes = {
-  component: React.PropTypes.func.isRequired,
-  isAuthenticated: React.PropTypes.bool.isRequired,
+  component: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 export default RedirectWhenUnauthorized;

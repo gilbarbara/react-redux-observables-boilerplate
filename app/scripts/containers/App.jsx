@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import Router from 'modules/ReduxRouter';
@@ -17,10 +18,10 @@ import SystemNotifications from 'components/SystemNotifications';
 
 export class App extends React.Component {
   static propTypes = {
-    app: React.PropTypes.object.isRequired,
-    dispatch: React.PropTypes.func.isRequired,
-    router: React.PropTypes.object.isRequired,
-    user: React.PropTypes.object.isRequired,
+    app: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    router: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired,
   };
 
   render() {
