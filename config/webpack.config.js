@@ -1,11 +1,29 @@
 /*eslint-disable no-var, one-var, func-names, indent, prefer-arrow-callback, object-shorthand, no-console, newline-per-chained-call, one-var-declaration-per-line, prefer-template, vars-on-top */
-var path = require('path');
-var webpack = require('webpack');
-var autoprefixer = require('autoprefixer');
+const path = require('path');
+const webpack = require('webpack');
+const ExtractText = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+const NPMPackage = require('./../package');
 
-var isProd = process.env.NODE_ENV === 'production';
+const isProd = process.env.NODE_ENV === 'production';
+const cssLoaders = [
+  'style',
+  'css?sourceMap',
+  {
+    loader: 'postcss',
+    options: {
+      sourceMap: true,
+      plugins: [
+        autoprefixer({
+          browsers: NPMPackage.browserslist,
+        }),
+      ],
+    },
+  },
+  'sass?sourceMap',
+];
 
-var config = {
+const config = {
   context: path.join(__dirname, '../app'),
   resolve: {
     alias: {
@@ -33,6 +51,12 @@ var config = {
         include: [
           path.join(__dirname, '../app', 'scripts'),
         ],
+      },
+      {
+        test: /\.scss$/,
+        loader: isProd ? ExtractText.extract({
+          use: cssLoaders.slice(1),
+        }) : cssLoaders,
       },
       {
         test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -78,30 +102,10 @@ var config = {
   },
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        context: '/',
-        postcss: function() {
-          return {
-            defaults: [autoprefixer],
-            custom: [
-              autoprefixer({
-                browsers: [
-                  'ie >= 11',
-                  'ie_mob >= 10',
-                  'ff >= 30',
-                  'chrome >= 34',
-                  'safari >= 7',
-                  'opera >= 23',
-                  'ios >= 7',
-                  'android >= 4.4',
-                  'bb >= 10',
-                ],
-              }),
-            ],
-          };
-        },
-      },
+    new webpack.DefinePlugin({
+      'process.env.APP_ENV': JSON.stringify(process.env.APP_ENV),
+      'process.env.NODE_ENV': JSON.stringify(isProd ? 'production' : 'development'),
+      VERSION: JSON.stringify(NPMPackage.version),
     }),
   ],
 };
