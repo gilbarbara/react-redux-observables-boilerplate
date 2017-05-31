@@ -4,16 +4,16 @@ import { mount } from 'enzyme';
 import ReduxRouter from 'modules/ReduxRouter';
 
 const mockUnsubscribe = jest.fn();
-const mockListen = jest.fn(handler => mockUnsubscribe);
+const mockListen = jest.fn(() => mockUnsubscribe);
 
-jest.mock('history/createBrowserHistory', () =>
-  () => ({
-    push: () => jest.fn(),
-    goBack: () => jest.fn(),
-    replace: () => jest.fn(),
+jest.mock('history/createBrowserHistory', () => {
+  const history = require.requireActual('history/createBrowserHistory');
+
+  return () => ({
+    ...history.default(),
     listen: handler => mockListen(handler),
-  })
-);
+  });
+});
 
 const mockDispatch = jest.fn();
 
@@ -43,19 +43,21 @@ describe('ReduxRouter', () => {
   });
 
   it('should handle history changes', () => {
-    expect(mockListen.mock.calls.length).toBe(1);
+    expect(mockListen.mock.calls.length).toBe(2);
 
-    mockListen.mock.calls[0][0]('/test', 'PUSH');
+    mockListen.mock.calls[1][0]('/test', 'PUSH');
     expect(mockDispatch.mock.calls[0][0]).toEqual({
-      action: 'PUSH',
-      location: '/test',
       type: '@@router/LOCATION_CHANGE',
+      payload: {
+        action: 'PUSH',
+        location: '/test',
+      },
     });
   });
 
   it('should be able to unmount the component', () => {
     wrapper.unmount();
-    expect(mockUnsubscribe.mock.calls.length).toBe(1);
+    expect(mockUnsubscribe.mock.calls.length).toBe(2);
     expect(wrapper.find('.test').length).toBe(0);
   });
 });

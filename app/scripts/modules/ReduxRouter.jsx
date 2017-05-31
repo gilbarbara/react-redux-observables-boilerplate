@@ -1,11 +1,9 @@
 import React from 'react';
-import { Router } from 'react-router-dom';
-import createBrowserHistory from 'history/createBrowserHistory';
 import PropTypes from 'prop-types';
+import Router from 'react-router-dom/Router';
+import history from 'modules/history';
 
 import { LOCATION_CHANGE } from '../constants/index';
-
-export const history = createBrowserHistory();
 
 class ReduxRouter extends React.Component {
   static propTypes = {
@@ -26,8 +24,10 @@ class ReduxRouter extends React.Component {
 
     dispatch({
       type: LOCATION_CHANGE,
-      location,
-      action,
+      payload: {
+        location,
+        action,
+      },
     });
   };
 
