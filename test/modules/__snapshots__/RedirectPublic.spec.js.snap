@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`utils/RedirectPublic should redirect to /private for authenticated access 1`] = `"<!-- react-empty: 1 -->"`;
+
+exports[`utils/RedirectPublic should render the Login component for unauthenticated access 1`] = `"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"-947056429\\">LOGIN</div>"`;

@@ -53,7 +53,7 @@ describe('App', () => {
   it('should have all the Router components', () => {
     expect(wrapper.find('ReduxRouter').length).toBe(1);
     expect(wrapper.find('Route').length).toBe(2);
-    expect(wrapper.find('RedirectWhenUnauthorized').length).toBe(1);
-    expect(wrapper.find('RouteWhenAuthorized').length).toBe(1);
+    expect(wrapper.find('RedirectProtected').length).toBe(1);
+    expect(wrapper.find('RedirectPublic').length).toBe(1);
   });
 });

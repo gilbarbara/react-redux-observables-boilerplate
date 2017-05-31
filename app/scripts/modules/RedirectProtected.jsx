@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
-const RouteWhenAuthorized = ({ component: Component, isAuthenticated, ...rest }) => (
+const RedirectProtected = ({ component: Component, isAuthenticated, ...rest }) => (
   <Route
     {...rest}
     render={props => (
@@ -18,10 +18,10 @@ const RouteWhenAuthorized = ({ component: Component, isAuthenticated, ...rest })
   />
 );
 
-RouteWhenAuthorized.propTypes = {
+RedirectProtected.propTypes = {
   component: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   location: PropTypes.object,
 };
 
-export default RouteWhenAuthorized;
+export default RedirectProtected;

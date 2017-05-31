@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import Router from 'modules/ReduxRouter';
-import RedirectWhenUnauthorized from 'modules/RedirectWhenUnauthorized';
-import RouteWhenAuthorized from 'modules/RouteWhenAuthorized';
+import RedirectPublic from 'modules/RedirectPublic';
+import RedirectProtected from 'modules/RedirectProtected';
 
 import Home from 'containers/Home';
 import Private from 'containers/Private';
@@ -36,13 +36,13 @@ export class App extends React.Component {
             <main className="app__main">
               <Switch>
                 <Route exact path="/" component={Home} />
-                <RedirectWhenUnauthorized
+                <RedirectPublic
                   component={Login}
                   isAuthenticated={user.isAuthenticated}
                   path="/login"
                   exact
                 />
-                <RouteWhenAuthorized
+                <RedirectProtected
                   component={Private}
                   isAuthenticated={user.isAuthenticated}
                   path="/private"

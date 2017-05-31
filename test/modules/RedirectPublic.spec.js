@@ -1,13 +1,13 @@
 import React from 'react';
 import { MemoryRouter as Router } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
-import RedirectWhenUnauthorized from 'modules/RedirectWhenUnauthorized';
+import RedirectPublic from 'modules/RedirectPublic';
 
-describe('utils/RedirectWhenUnauthorized', () => {
+describe('utils/RedirectPublic', () => {
   it('should render the Login component for unauthenticated access', () => {
     const render = renderToString(
       <Router location="/login">
-        <RedirectWhenUnauthorized
+        <RedirectPublic
           exact
           pattern="/login"
           component={() => (<div>LOGIN</div>)}
@@ -22,7 +22,7 @@ describe('utils/RedirectWhenUnauthorized', () => {
   it('should redirect to /private for authenticated access', () => {
     const render = renderToString(
       <Router location="/login">
-        <RedirectWhenUnauthorized
+        <RedirectPublic
           exact
           pattern="/login"
           component={() => (<div>LOGIN</div>)}
