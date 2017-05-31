@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Github should handle FETCH_POPULAR_REPOS_FAILURE 1`] = `
 Object {
   "popularRepos": Object {

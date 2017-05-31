@@ -1,3 +1,5 @@
-exports[`utils/RouteWhenAuthorized should allow navigation for authenticated access 1`] = `"<div data-reactroot=\"\" data-reactid=\"1\" data-react-checksum=\"-363261579\">PRIVATE</div>"`;
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`utils/RouteWhenAuthorized should allow navigation for authenticated access 1`] = `"<div data-reactroot=\\"\\" data-reactid=\\"1\\" data-react-checksum=\\"-363261579\\">PRIVATE</div>"`;
 
 exports[`utils/RouteWhenAuthorized should redirect for unauthenticated access 1`] = `"<!-- react-empty: 1 -->"`;

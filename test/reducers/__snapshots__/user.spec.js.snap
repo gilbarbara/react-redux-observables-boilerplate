@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`User should handle USER_LOGIN_REQUEST 1`] = `
 Object {
   "isAuthenticated": false,
