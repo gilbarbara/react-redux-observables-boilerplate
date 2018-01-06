@@ -2,44 +2,39 @@
  * @module Reducers/User
  * @desc User Reducer
  */
-
-import { REHYDRATE } from 'redux-persist/constants';
-import { createReducer } from 'utils/helpers';
+import immutable from 'immutability-helper';
+import { createReducer } from 'modules/helpers';
 
 import { ActionTypes } from 'constants/index';
 
 export const userState = {
   isAuthenticated: false,
-  isRunning: false,
-  rehydrated: false,
+  status: 'idle',
 };
 
 export default {
   user: createReducer(userState, {
-    [REHYDRATE](state, action) {
-      return Object.assign({}, state, action.payload.user, {
-        rehydrated: true,
+    [ActionTypes.USER_LOGIN_REQUEST](state) {
+      return immutable(state, {
+        status: { $set: 'running' },
       });
     },
-    [ActionTypes.USER_LOGIN_REQUEST](state) {
-      return {
-        ...state,
-        isRunning: true,
-      };
-    },
     [ActionTypes.USER_LOGIN_SUCCESS](state) {
-      return {
-        ...state,
-        isAuthenticated: true,
-        isRunning: false,
-      };
+      return immutable(state, {
+        status: { $set: 'idle' },
+        isAuthenticated: { $set: true },
+      });
+    },
+    [ActionTypes.USER_LOGOUT_REQUEST](state) {
+      return immutable(state, {
+        status: { $set: 'running' },
+      });
     },
     [ActionTypes.USER_LOGOUT_SUCCESS](state) {
-      return {
-        ...state,
-        isAuthenticated: false,
-        isRunning: false,
-      };
+      return immutable(state, {
+        status: { $set: 'idle' },
+        isAuthenticated: { $set: false },
+      });
     },
   }),
 };

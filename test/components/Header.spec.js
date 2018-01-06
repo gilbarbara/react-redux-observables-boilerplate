@@ -8,6 +8,7 @@ jest.mock('react-router-dom/NavLink', () =>
 );
 
 const mockDispatch = jest.fn();
+
 function setup() {
   const props = {
     dispatch: mockDispatch,
@@ -22,8 +23,8 @@ function setup() {
 describe('Header', () => {
   const wrapper = setup();
 
-  it('should be a StatelessComponent', () => {
-    expect(wrapper.instance().constructor.name).toBe('StatelessComponent');
+  it('should be a Component', () => {
+    expect(wrapper.instance() instanceof React.Component).toBe(true);
   });
 
   it('should render properly', () => {
@@ -32,7 +33,10 @@ describe('Header', () => {
 
   it('should handle login click', () => {
     wrapper.find('.app__header__login').simulate('click');
-    expect(mockDispatch.mock.calls[0][0]).toEqual({ type: 'USER_LOGIN_REQUEST' });
+    expect(mockDispatch.mock.calls[0][0]).toEqual({
+      type: 'USER_LOGIN_REQUEST',
+      payload: {},
+    });
   });
 
   it('should handle logout click', () => {
@@ -43,7 +47,10 @@ describe('Header', () => {
     });
 
     wrapper.find('.app__header__logout').simulate('click');
-    expect(mockDispatch.mock.calls[1][0]).toEqual({ type: 'USER_LOGOUT_REQUEST' });
+    expect(mockDispatch.mock.calls[1][0]).toEqual({
+      type: 'USER_LOGOUT_REQUEST',
+      payload: {},
+    });
   });
 });
 

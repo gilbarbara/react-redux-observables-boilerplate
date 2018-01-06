@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  opacity: 1 !important;
+  position: relative;
+  transition: opacity 0.5s;
 
   &__main {
     min-height: calc(100vh - #{$footer-height});
@@ -9,7 +12,9 @@
   }
 
   &__route {
-    padding-top: $grid-gutter-width;
+    background-color: $white;
+    min-height: calc(100vh - #{$header-height} - #{$footer-height});
+    padding: $grid-gutter-width 0;
   }
 
   &__container {

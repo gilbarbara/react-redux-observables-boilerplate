@@ -1,14 +1,9 @@
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
 import 'vendor/rxjs';
 
-Object.defineProperty(window.location, 'href', {
-  writable: true,
-  value: 'http://localhost:3000/',
-});
-
-Object.defineProperty(window.location, 'pathname', {
-  writable: true,
-  value: '/',
-});
+Enzyme.configure({ adapter: new Adapter() });
 
 const react = document.createElement('div');
 react.id = 'react';
@@ -18,10 +13,7 @@ document.body.appendChild(react);
 const consoleError = console.error;
 console.error = jest.fn(message => {
   const skipMessages = [
-    'Accessing PropTypes via the main React package is deprecated. Use the prop-types package from npm instead.',
-    'React.createClass is deprecated',
-    'Shallow renderer has been moved',
-    'ReactTestUtils has been moved to react-dom/test-utils',
+    'redux-persist failed to create sync storage.',
   ];
   let shouldSkip = false;
 
@@ -36,11 +28,17 @@ console.error = jest.fn(message => {
   }
 });
 
-window.matchMedia = () =>
-  ({
-    matches: false,
-    addListener: () => {
-    },
-    removeListener: () => {
-    },
-  });
+global.navigate = (options) => {
+  const { pathname = location.pathname, search, hash } = options;
+  let url = `${location.protocol}//${location.host}${pathname}`;
+
+  if (search) {
+    url += `?${search}`;
+  }
+
+  if (hash) {
+    url += `#${hash}`;
+  }
+
+  jsdom.reconfigure({ url });
+};

@@ -2,63 +2,84 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
-import Router from 'modules/ReduxRouter';
-import RedirectPublic from 'modules/RedirectPublic';
-import RedirectProtected from 'modules/RedirectProtected';
+import { ConnectedRouter } from 'react-router-redux';
+import Helmet from 'react-helmet';
+import cx from 'classnames';
+import history from 'modules/history';
+import RoutePublic from 'modules/RoutePublic';
+import RoutePrivate from 'modules/RoutePrivate';
 
-import Home from 'containers/Home';
-import Private from 'containers/Private';
-import Login from 'containers/Login';
-import NotFound from 'containers/NotFound';
+import config from 'config';
+import { showAlert } from 'actions';
 
-import Loader from 'components/Loader';
+import Home from 'routes/Home';
+import Private from 'routes/Private';
+import Login from 'routes/Login';
+import NotFound from 'routes/NotFound';
+
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import SystemNotifications from 'components/SystemNotifications';
+import SystemAlerts from 'components/SystemAlerts';
 
 export class App extends React.Component {
   static propTypes = {
     app: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
-    router: PropTypes.object.isRequired,
     user: PropTypes.object.isRequired,
   };
 
-  render() {
-    const { app, dispatch, router, user } = this.props;
-    let html = (<Loader />);
+  componentWillReceiveProps(nextProps) {
+    const { dispatch, user } = this.props;
+    const { user: nextUser } = nextProps;
 
-    if (app.rehydrated) {
-      html = (
-        <Router dispatch={dispatch} router={router}>
-          <div key="app" className="app">
-            <Header dispatch={dispatch} user={user} />
-            <main className="app__main">
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <RedirectPublic
-                  component={Login}
-                  isAuthenticated={user.isAuthenticated}
-                  path="/login"
-                  exact
-                />
-                <RedirectProtected
-                  component={Private}
-                  isAuthenticated={user.isAuthenticated}
-                  path="/private"
-                  exact
-                />
-                <Route component={NotFound} />
-              </Switch>
-            </main>
-            <Footer />
-            <SystemNotifications dispatch={dispatch} app={app} />
-          </div>
-        </Router>
-      );
+    /* istanbul ignore else */
+    if (!user.isAuthenticated && nextUser.isAuthenticated) {
+      dispatch(showAlert('Hello!', { type: 'primary', icon: 'i-flash' }));
     }
+  }
 
-    return html;
+  render() {
+    const { app, dispatch, user } = this.props;
+
+    return (
+      <ConnectedRouter history={history}>
+        <div
+          className={cx('app', {
+            'app--private': user.isAuthenticated,
+          })}
+        >
+          <Helmet
+            defer={false}
+            htmlAttributes={{ lang: 'pt-br' }}
+            encodeSpecialCharacters={true}
+            defaultTitle={config.title}
+            titleTemplate={`%s | ${config.name}`}
+            titleAttributes={{ itemprop: 'name', lang: 'pt-br' }}
+          />
+          <Header dispatch={dispatch} user={user} />
+          <main className="app__main">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <RoutePublic
+                component={Login}
+                isAuthenticated={user.isAuthenticated}
+                path="/login"
+                exact
+              />
+              <RoutePrivate
+                component={Private}
+                isAuthenticated={user.isAuthenticated}
+                path="/private"
+                exact
+              />
+              <Route component={NotFound} />
+            </Switch>
+          </main>
+          <Footer />
+          <SystemAlerts alerts={app.alerts} dispatch={dispatch} />
+        </div>
+      </ConnectedRouter>
+    );
   }
 }
 
@@ -66,7 +87,6 @@ export class App extends React.Component {
 function mapStateToProps(state) {
   return {
     app: state.app,
-    router: state.router,
     user: state.user,
   };
 }

@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Private should render properly 1`] = `"<div class=\\"app__private app__route\\"><div class=\\"app__container\\"><h2>Popular Repos</h2><div class=\\"app__private__running\\"><div class=\\"app__loader app__loader--pulse\\"><div></div></div><div class=\\"app__cancel\\"><button class=\\"btn btn-primary btn-sm btn-icon btn-icon--lg\\"><i class=\\"i-times-circle\\"></i><span>Cancel</span></button></div></div></div></div>"`;

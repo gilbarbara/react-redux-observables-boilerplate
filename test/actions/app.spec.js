@@ -1,23 +1,41 @@
-import * as Actions from 'actions';
+import {
+  hideAlert,
+  showAlert,
+} from 'actions/app';
 
-describe('App', () => {
-  it('goTo should create an action to navigate with react-router', () => {
-    expect([Actions.goTo('/destination')]).toMatchSnapshot();
+describe('actions/app', () => {
+  describe('hideAlert', () => {
+    it('should return an action', () => {
+      expect(hideAlert('ABC1')).toEqual({
+        type: 'HIDE_ALERT',
+        payload: { id: 'ABC1' },
+      });
+    });
   });
 
-  it('showAlert should return an action', () => {
-    expect(Actions.showAlert('success', 'Alright!', false)).toMatchSnapshot();
-  });
+  describe('showAlert', () => {
+    it('should return an action', () => {
+      expect(showAlert('Alright!', { type: 'success', id: 'ABC1' })).toEqual({
+        type: 'SHOW_ALERT',
+        payload: {
+          id: 'ABC1',
+          message: 'Alright!',
+          position: 'bottom-right',
+          type: 'success',
+          timeout: 5,
+        },
+      });
 
-  it('hideAlert should return an action', () => {
-    expect(Actions.hideAlert()).toMatchSnapshot();
-  });
-
-  it('login should return an action', () => {
-    expect(Actions.login()).toMatchSnapshot();
-  });
-
-  it('logOut should return an action', () => {
-    expect(Actions.logOut()).toMatchSnapshot();
+      expect(showAlert('ERROR!', { type: 'error', id: 'ABC2', timeout: 0, position: 'top' })).toEqual({
+        type: 'SHOW_ALERT',
+        payload: {
+          id: 'ABC2',
+          message: 'ERROR!',
+          position: 'top',
+          type: 'error',
+          timeout: 0,
+        },
+      });
+    });
   });
 });

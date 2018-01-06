@@ -3,48 +3,34 @@
 exports[`User should handle USER_LOGIN_REQUEST 1`] = `
 Object {
   "isAuthenticated": false,
-  "isRunning": true,
-  "rehydrated": false,
+  "status": "running",
 }
 `;
 
 exports[`User should handle USER_LOGIN_SUCCESS 1`] = `
 Object {
   "isAuthenticated": true,
-  "isRunning": false,
-  "rehydrated": false,
+  "status": "idle",
+}
+`;
+
+exports[`User should handle USER_LOGOUT_REQUEST 1`] = `
+Object {
+  "isAuthenticated": false,
+  "status": "running",
 }
 `;
 
 exports[`User should handle USER_LOGOUT_SUCCESS 1`] = `
 Object {
   "isAuthenticated": false,
-  "isRunning": false,
-  "rehydrated": false,
-}
-`;
-
-exports[`User should handle persist/REHYDRATE with payload 1`] = `
-Object {
-  "isAuthenticated": false,
-  "isRunning": false,
-  "logged": true,
-  "rehydrated": true,
-}
-`;
-
-exports[`User should handle persist/REHYDRATE without payload 1`] = `
-Object {
-  "isAuthenticated": false,
-  "isRunning": false,
-  "rehydrated": true,
+  "status": "idle",
 }
 `;
 
 exports[`User should return the initial state 1`] = `
 Object {
   "isAuthenticated": false,
-  "isRunning": false,
-  "rehydrated": false,
+  "status": "idle",
 }
 `;

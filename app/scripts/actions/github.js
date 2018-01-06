@@ -11,8 +11,9 @@ import { ActionTypes } from 'constants/index';
  *
  * @returns {Object}
  */
-export function fetchPopularRepos() {
+export function fetchPopularRepos(): Object {
   return {
     type: ActionTypes.FETCH_POPULAR_REPOS_REQUEST,
+    payload: {},
   };
 }
