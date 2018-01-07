@@ -2,7 +2,7 @@
   "name": "react-redux-observables-boilerplate",
   "title": "React-Redux-Observables Boilerplate",
   "description": "A starter kit for React with Router, Redux, Observable + RxJS",
-  "version": "2018.1.0-0",
+  "version": "2018.1.0",
   "author": "Gil Barbara <gilbarbara@gmail.com>",
   "repository": {
     "type": "git",
