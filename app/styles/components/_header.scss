@@ -1,5 +1,5 @@
 .app__header {
-  background-color: lighten($brand-secondary, 30);
+  background-color: $app-color-alt;
   height: $header-height;
   left: 0;
   position: fixed;
@@ -44,7 +44,7 @@
     padding: 0;
     width: 100%;
 
-    @include is-only {
+    @include sm-only {
       margin-top: $grid-gutter-width / 6;
       width: 100%;
     }
@@ -76,7 +76,7 @@
     color: #fff;
 
     &.is-active {
-      color: $brand-primary;
+      color: $app-color;
       font-weight: 700;
       pointer-events: none;
     }

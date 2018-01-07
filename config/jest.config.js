@@ -1,7 +1,7 @@
 module.exports = {
   rootDir: '../',
   transform: {
-    '.*': '<rootDir>/node_modules/babel-jest',
+    '.*': 'babel-jest',
   },
   moduleFileExtensions: [
     'js',
@@ -20,14 +20,16 @@ module.exports = {
     '^(expose|bundle)': '<rootDir>/test/__setup__/moduleMock.js',
   },
   setupFiles: [
+    '<rootDir>/test/__setup__/shim.js',
     '<rootDir>/test/__setup__/index.js',
   ],
-  setupTestFrameworkScriptFile: '<rootDir>/node_modules/jest-enzyme/lib/index.js',
+  setupTestFrameworkScriptFile: 'jest-enzyme/lib/index.js',
+  testEnvironment: 'jest-environment-jsdom-global',
   testRegex: '/test/.*?\\.(test|spec)\\.js$',
+  testURL: 'http://localhost:3000',
   collectCoverage: false,
   collectCoverageFrom: [
     'app/scripts/**/*.{js,jsx}',
-    '!app/scripts/**/*.dev.{js,jsx}',
     '!app/scripts/vendor/*',
   ],
   coverageThreshold: {

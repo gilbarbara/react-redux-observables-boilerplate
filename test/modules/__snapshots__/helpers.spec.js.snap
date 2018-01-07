@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`helpers createReducer should return a proper object 1`] = `[Function]`;

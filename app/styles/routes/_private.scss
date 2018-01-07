@@ -1,0 +1,26 @@
+.app__private {
+  h2 {
+    margin-bottom: $grid-gutter-width;
+  }
+
+  &__running {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 20vh;
+  }
+
+  &__repos {
+    > div {
+      a {
+        font-size: $font-size-h5;
+        margin-bottom: $grid-gutter-width / 6;
+      }
+
+      + div {
+        margin-top: $grid-gutter-width / 3;
+      }
+    }
+  }
+}

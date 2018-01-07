@@ -13,54 +13,9 @@
   width: $width;
 }
 
-@mixin striped-bg($bg-color: #ccc, $darken-amount: 5%, $stripe-color: darken($bg-color, $darken-amount)) {
-  background: $bg-color linear-gradient(-45deg, $stripe-color 25%, transparent 25%, transparent 50%, $stripe-color 50%, $stripe-color 75%, transparent 75%, transparent);
-  background-size: 4rem 4rem;
-}
-
-@mixin dashed-border($dashlength,
-$spacelength,
-$borderwidth,
-$color,
-$position: top) {
-  $per: percentage($dashlength / ($dashlength + $spacelength));
-
-  background-image: linear-gradient(to right, $color 0%, $color $per, rgba(0, 0, 0, 0) $per);
-  background-position: 0 $position;
-  background-repeat: repeat-x;
-  background-size: ($dashlength + $spacelength) $borderwidth;
-}
-
-@mixin dashed-border-vertical($dashlength,
-$spacelength,
-$borderwidth,
-$color,
-$position: left) {
-  $per: percentage($dashlength / ($dashlength + $spacelength));
-
-  background-image: linear-gradient(to bottom, $color 0%, $color $per, rgba(0, 0, 0, 0) $per);
-  background-position: $position 0;
-  background-repeat: repeat-y;
-  background-size: $borderwidth ($dashlength + $spacelength);
-}
-
-@mixin center-child() {
-  $distance: 50%;
-
-  position: relative;
-
-  > * {
-    left: $distance;
-    position: absolute;
-    top: $distance;
-    transform: translate(-#{$distance}, -#{$distance});
-  }
-}
-
-@mixin vertical-align($top: 50%) {
-  position: relative;
-  top: $top;
-  transform: translateY(-$top);
+@mixin striped-bg($angle: 45deg, $bg-color: $black, $stripe-color: transparent) {
+  background-image: repeating-linear-gradient($angle, $bg-color, $bg-color 2rem, $stripe-color 2rem, $stripe-color 4rem);
+  background-size: 5.6rem 5.6rem;
 }
 
 @mixin app-container($opts: ()) {

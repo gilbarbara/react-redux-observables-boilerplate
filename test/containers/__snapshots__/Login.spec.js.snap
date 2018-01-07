@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Login should render properly 1`] = `"<div class=\\"app__login app__route\\"><div class=\\"app__container\\"><h1>You must login to view this page</h1></div></div>"`;
-
-exports[`Login should render the redirect location 1`] = `"<div class=\\"app__login app__route\\"><div class=\\"app__container\\"><h1>You must login to view the page at /private</h1></div></div>"`;

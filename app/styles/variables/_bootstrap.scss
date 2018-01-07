@@ -1,40 +1,40 @@
 // Bootstrap 4
-$enable-flex: true;
-$enable-transitions: true;
 $grid-gutter-width: 3rem;
 
 /* stylelint-disable unit-blacklist */
 $grid-breakpoints: (
   xs: 0,
   ix: 400px,
-  sm: 480px,
-  is: 600px,
+  sm: 576px,
   md: 768px,
   im: 880px,
   lg: 1024px,
-  xl: 1280px
+  xl: 1280px,
+  xxl: 1600px,
 );
 /* stylelint-enable */
 
 $container-max-widths: (
   ix: 40rem,
-  sm: 48rem,
-  is: 58rem,
+  sm: 57.6rem,
   md: 72rem,
   im: 88rem,
   lg: 96rem,
-  xl: 114rem
+  xl: 114rem,
+  xxl: 154rem
 );
-
-$brand-primary: #764abc;
 
 $body-bg: #fff;
 
-$btn-border-radius-sm: 1.6rem;
-$btn-padding-x-sm: 1.6rem;
-$btn-padding-y-sm: 0.8rem;
+$theme-colors: (
+  'primary':    $app-color,
+);
 
-$btn-border-radius: 2rem;
+$btn-border-radius-sm: 0.4rem;
+$btn-padding-x-sm: 1.2rem;
+$btn-padding-y-sm: 0.6rem;
+
+$btn-border-radius: 1rem;
 $btn-padding-x: 2rem;
 $btn-padding-y: 1rem;
 
@@ -44,6 +44,8 @@ $btn-padding-y-lg: 1.2rem;
 
 // *** Typography
 $font-family-sans-serif: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$headings-font-family: Lato;
+$headings-font-weight: 700;
 
 $font-size-xs: 1.2rem;
 $font-size-sm: 1.4rem;
@@ -59,5 +61,3 @@ $font-size-h4: 2rem;
 $font-size-h5: 1.8rem;
 $font-size-h6: 1.6rem;
 
-$headings-font-family: Lato;
-$headings-font-weight: 700;

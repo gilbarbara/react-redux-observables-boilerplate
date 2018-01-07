@@ -10,7 +10,7 @@ module.exports = {
 
   'should be able to init a session': browser => {
     browser
-      .url('http://localhost:3030/')
+      .url('http://localhost:3000/')
       .resizeWindow(1280, 800)
       .waitForElementVisible('#react', timer);
   },
@@ -49,8 +49,8 @@ module.exports = {
   },
 
   'should block navigation to /private if not logged': browser => {
-    browser.url('http://localhost:3030/private');
+    browser.url('http://localhost:3000/private');
     browser.pause(wait);
-    browser.assert.urlEquals('http://localhost:3030/login');
+    browser.assert.urlEquals('http://localhost:3000/login');
   },
 };

@@ -4,13 +4,9 @@ exports[`Github should handle FETCH_POPULAR_REPOS_FAILURE 1`] = `
 Object {
   "popularRepos": Object {
     "data": Array [],
-    "error": true,
-    "isLoading": false,
-    "isReady": false,
     "message": "ajax error 404",
-    "status": 404,
+    "status": "error",
   },
-  "rehydrated": false,
 }
 `;
 
@@ -18,11 +14,9 @@ exports[`Github should handle FETCH_POPULAR_REPOS_REQUEST 1`] = `
 Object {
   "popularRepos": Object {
     "data": Array [],
-    "error": false,
-    "isLoading": true,
-    "isReady": false,
+    "message": "",
+    "status": "running",
   },
-  "rehydrated": false,
 }
 `;
 
@@ -34,36 +28,9 @@ Object {
         "id": 1,
       },
     ],
-    "error": false,
-    "isLoading": false,
-    "isReady": true,
+    "message": "",
+    "status": "loaded",
   },
-  "rehydrated": false,
-}
-`;
-
-exports[`Github should handle persist/REHYDRATE with payload 1`] = `
-Object {
-  "logged": true,
-  "popularRepos": Object {
-    "data": Array [],
-    "error": false,
-    "isLoading": false,
-    "isReady": false,
-  },
-  "rehydrated": true,
-}
-`;
-
-exports[`Github should handle persist/REHYDRATE without payload 1`] = `
-Object {
-  "popularRepos": Object {
-    "data": Array [],
-    "error": false,
-    "isLoading": false,
-    "isReady": false,
-  },
-  "rehydrated": true,
 }
 `;
 
@@ -71,10 +38,8 @@ exports[`Github should return the initial state 1`] = `
 Object {
   "popularRepos": Object {
     "data": Array [],
-    "error": false,
-    "isLoading": false,
-    "isReady": false,
+    "message": "",
+    "status": "idle",
   },
-  "rehydrated": false,
 }
 `;

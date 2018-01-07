@@ -1,12 +1,7 @@
-// Core variables and mixins
+@import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
-
-// // Reset and dependencies
-@import '~bootstrap/scss/normalize';
-@import '~bootstrap/scss/print';
-
-// Core CSS
+@import '~bootstrap/scss/root';
 @import '~bootstrap/scss/reboot';
 @import '~bootstrap/scss/type';
 @import '~bootstrap/scss/images';
@@ -15,8 +10,6 @@
 // @import '~bootstrap/scss/tables';
 @import '~bootstrap/scss/forms';
 @import '~bootstrap/scss/buttons';
-
-// Components
 @import '~bootstrap/scss/transitions';
 // @import '~bootstrap/scss/dropdown';
 // @import '~bootstrap/scss/button-group';
@@ -28,13 +21,12 @@
 // @import '~bootstrap/scss/breadcrumb';
 // @import '~bootstrap/scss/pagination';
 // @import '~bootstrap/scss/pager';
-// @import '~bootstrap/scss/labels';
+// @import '~bootstrap/scss/badge';
 // @import '~bootstrap/scss/jumbotron';
 // @import '~bootstrap/scss/alert';
 // @import '~bootstrap/scss/progress';
 // @import '~bootstrap/scss/media';
 // @import '~bootstrap/scss/list-group';
-// @import '~bootstrap/scss/responsive-embed';
 // @import '~bootstrap/scss/close';
 
 // Components w/ JavaScript
@@ -45,3 +37,4 @@
 
 // Utility classes
 @import '~bootstrap/scss/utilities';
+@import '~bootstrap/scss/print';

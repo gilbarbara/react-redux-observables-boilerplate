@@ -34,8 +34,3 @@ export const XHR: Object = keyMirror({
   SUCCESS: undefined,
   FAIL: undefined,
 });
-
-/**
- * @constant {string} LOCATION_CHANGE
- */
-export const LOCATION_CHANGE: string = '@@router/LOCATION_CHANGE';
