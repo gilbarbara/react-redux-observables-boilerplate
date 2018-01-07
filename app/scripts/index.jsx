@@ -7,6 +7,7 @@ import 'vendor/rxjs';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
 import { PersistGate } from 'redux-persist/lib/integration/react';
@@ -31,6 +32,7 @@ export const init = {
 
     this.initOfflinePlugin();
 
+    /* istanbul ignore next */
     return Promise
       .all([this.loadCSS()])
       .then(() => {
@@ -38,7 +40,7 @@ export const init = {
 
         return process.env.NODE_ENV;
       })
-      .catch(/* istanbul ignore next */ reason => {
+      .catch(reason => {
         if (this.fetchRetries < 3) {
           this.fetchRetries++;
           this.run();
@@ -47,6 +49,7 @@ export const init = {
       });
   },
   loadCSS() {
+    /* istanbul ignore next */
     return new Promise(resolve => {
       this.retryCSS = () => {
         if (this.isCSSLoaded() || this.cssRetries > 2) {
