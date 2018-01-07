@@ -15,7 +15,7 @@ process.on('unhandledRejection', err => {
 require('../config/env');
 
 const path = require('path');
-const { spawn } = require('child_process');
+const { spawn, spawnSync } = require('child_process');
 const chalk = require('chalk');
 const dateFns = require('date-fns');
 const webpack = require('webpack');
@@ -79,17 +79,22 @@ choosePort(HOST, DEFAULT_PORT)
       console.log(chalk.yellow(`Duration: ${dateFns.differenceInSeconds(now, start)}s - ${compilation.hash}`));
 
       if (isAutomationTest) {
-        const cypress = spawn(path.join(__dirname, '../node_modules/.bin/cypress'), ['run']);
+        spawnSync('pkill', ['-f', 'selenium']);
+  
+        const nightwatch = spawn(path.join(__dirname, '../node_modules/.bin/nightwatch'), [
+          '-c',
+          path.join(__dirname, '../test/__setup__/nightwatch.conf.js'),
+        ]);
 
-        cypress.stdout.on('data', (data) => {
+        nightwatch.stdout.on('data', (data) => {
           process.stdout.write(data.toString());
         });
 
-        cypress.stderr.on('data', (data) => {
+        nightwatch.stderr.on('data', (data) => {
           process.stdout.write(data.toString());
         });
 
-        cypress.on('close', () => {
+        nightwatch.on('close', () => {
           process.exit(0);
         });
       }
